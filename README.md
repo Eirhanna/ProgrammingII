@@ -5,9 +5,9 @@ Java Project
 This program has been created in order to maintain the most beneficial for the company customers. It calculates the amount of products that have passed the period of sale and the clients that have eliminated a lot their purchases and they may pull away from our company.
 
 ## Tools
-[Maven]()
-[Sql]
-[Javadoc]
+* [Maven]()
+* [Sql]
+* [Javadoc]
 
 ## Installation
 To create the .jar file:
