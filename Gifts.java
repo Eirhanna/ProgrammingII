@@ -80,9 +80,9 @@ public class Gifts {
 	public int askNumberOfGifts() {
 		findNumberOfGifts(sizeOfnewoffered);
 		
-		int numberOfGifts = Integer.parseInt((JOptionPane.showInputDialog("You can make up to " + numberOfPossibleGifts
-				+ " gifts to your most valuable customers. How many gifts do you wish to make?")));
-
+		JOptionPane.showMessageDialog(null,
+				"You can make up to " + (numberOfPossibleGifts) + " gifts to your most valuable customers.");
+		int numberOfGifts = Integer.parseInt(JOptionPane.showInputDialog("How many gifts do you wish to make?"));
 		return numberOfGifts;
 	}
 
