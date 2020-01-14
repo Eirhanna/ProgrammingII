@@ -6,8 +6,8 @@ This program has been created in order to maintain the most beneficial for the c
 
 ## Tools
 * [Maven]()
-* [Sql]
-* [Javadoc]
+* [Sql]()
+* [Javadoc]()
 
 ## Installation
 To create the .jar file:
