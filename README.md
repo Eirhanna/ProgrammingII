@@ -16,7 +16,7 @@ To create the .jar file:
 ΄΄΄
 
 ## Authors 
-| Member |
+| Members |
 | --- |
 Eirianna Papoutsi(Team Captain)
 Niki Boura
