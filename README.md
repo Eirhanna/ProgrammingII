@@ -1,4 +1,4 @@
-# ProgrammingII
+# ProgrammingII Java Project
 Java Project
 
 ## Description of the project
