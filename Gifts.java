@@ -25,7 +25,6 @@ public class Gifts {
 	private int numberOfPoductsAsGifts;
 	private int numberOfPossibleGifts;
 	int numberOfGifts;
-	private InfoMail objectOfInfoMailClass; // create an object of the class InfoMail
 	static String namesOfCustomersForGifts[];
 	static String mailsOfCustomersForGifts[];
 	static String namesOfProductsAsGifts[];
