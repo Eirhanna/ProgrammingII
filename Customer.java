@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Figure out which customer has to take an offer by evaluating his fees and
+ * Figuring out which customer has to take an offer by evaluating his fees and
  * the fact that he might have already taken an offer.
  * 
  * @author Vasiliki Chalkiopoulou
@@ -24,10 +24,10 @@ public class Customer extends NewPurchasesSeparation {
 	static ArrayList<Customer> offered = new ArrayList<Customer>();
 	Databaseconnection objectOfDatabaseconnectionClass = new Databaseconnection();
 	NewPurchasesSeparation objectOfNewPurchasesSeparation = new NewPurchasesSeparation();
-	
+
 	/**
-	 * This method calculates the total fees of every old customer including those
-	 * that exist in the data base.
+	 * This method calculates the total fees of every old customer
+	 * including thos that exist in the data base.
 	 */
 	public void addTheNewFees() {
 
@@ -42,7 +42,7 @@ public class Customer extends NewPurchasesSeparation {
 		// A list that shows with 1 the customers that reduced a lot their purchases and
 		// with 0 the one's who did not.
 		firstcase = new ArrayList<Integer>();
-		// Initializing the list with 0.
+		// initializing the list with 0
 		for (int l = 0; l < Databaseconnection.totalFees.size(); l++) {
 			firstcase.add(0);
 		}
@@ -56,6 +56,7 @@ public class Customer extends NewPurchasesSeparation {
 						.equals(Databaseconnection.totalFees.get(k).getName())) {
 					double a = NewPurchasesSeparation.OldCustomers.get(i).getNf() + totalfee.get(k);
 					totalfee.set(k, a);
+
 					// Checks if the new purchase is smaller that the minimun purchase of the
 					// previous year.
 					if (NewPurchasesSeparation.OldCustomers.get(i).getNf() < Databaseconnection.totalFees.get(k)
@@ -70,8 +71,9 @@ public class Customer extends NewPurchasesSeparation {
 	
 	/**
 	 * This method ,after having the total amount of expenses of every customer
-	 * finds out if a customer that has thw specific month lower expenses than the
-	 * usual can take a gift if he hasn't get any till now.
+	 * finds out if a customer that has thw specific month 
+	 * lower expenses than the usual can take a gift if he hasn't get 
+	 * any till now.
 	 */
 	public ArrayList<NewPurchasesSeparation> findsCustomersThatDeserveAnOffer() {
 		Customer object = new Customer();
@@ -116,11 +118,7 @@ public class Customer extends NewPurchasesSeparation {
 		}
 		return newoffered;
 	}
-	
-	/**
-	 * This method helps us keep the data of the offered list every time that the
-	 * program runs.
-	 */
+
 	public void createOfferedArrayList() {
 		String url = "jdbc:sqlserver://195.251.249.161:1433;" + "databaseName=DB29;user=G529;password=59w495f49;";
 		Connection dbcon;
@@ -156,6 +154,7 @@ public class Customer extends NewPurchasesSeparation {
 
 	}
 
+	// Default constructor.
 	public Customer() {
 	}
 
@@ -191,7 +190,7 @@ public class Customer extends NewPurchasesSeparation {
 		this.offeredName = offeredname;
 	}
 
-	// Constructor.
+	// Usefull constructor.
 	public Customer(String offeredName, String offeredMail) {
 		this.offeredName = offeredName;
 		this.offeredMail = offeredMail;
