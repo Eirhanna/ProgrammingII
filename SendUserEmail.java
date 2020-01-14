@@ -15,30 +15,28 @@ import javax.mail.internet.MimeMessage;
  * who needs to be informed about the offer made to the important clients in
  * order for them to keep track of the offers they make
  * 
- * SendUserEmail gets the name and the email account of the user and an InfoMail
- * object containing three string arrays, of recipients' mails and names and the
- * products the company has decided to offer Then, it contacts the gmail server,
+ * SendUserEmail gets the name and the email account of the user and three string arrays, one of recipients' mails 
+ * one of their names and one of the products the company has decided to offer. Then, it contacts the gmail server,
  * logs into the gmail account of the company and then prepares the
  * corresponding message to the user containing the number of the gifts given
  * and more specifically a list for the rewarded clients and a list of the
- * products thet were distributed
+ * products that were distributed
  * 
  * @author Katerina Dimatou
  * 
  * @param name   of the user of the program
  * @param email  account of the user of the program
- * @param object of the InfoMail class containing the three string arrays of
- *               email accounts, names, products for the offer
+ * @param array of recipients' mails
+ * @param array of recipients' names
+ * @param array of products that will be given out
+ * 
  * @returns Nothing
  * @throws Exception
  *
  */
 
 public class SendUserEmail {
-	public void sendUserMail(String nameOfUser, String emailOfUser, InfoMail object) throws Exception {
-
-		String[] names = object.getNamesOfCustomersForGifts();
-		String[] productsToOffer = object.getNamesOfProductsAsGifts();
+	public void sendUserMail(String nameOfUser, String emailOfUser, String[] recepients, String[] names, String[] productsToOffer) throws Exception {
 
 		int numOfGifts = productsToOffer.length;
 
