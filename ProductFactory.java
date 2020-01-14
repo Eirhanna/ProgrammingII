@@ -1,5 +1,3 @@
-package javaProg2;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,12 +60,10 @@ public class ProductFactory {
 			return 0;
 		}
 	}
-	
-	public static double getCostSold() {
-		return costSold;
-	}
-	
+
 	public static void setCostSold(double cost) {
 		costSold = cost;
+		JOptionPane.showMessageDialog(null, "Cost sold was insert successfully!");
+		Main.loadObjects();
 	}	
 }
