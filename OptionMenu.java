@@ -109,7 +109,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 		F.pack();
 		F.setLocationRelativeTo(null);
 
-			// create the password frame
+		// create the password frame
 		JFrame passFrame = new JFrame("Enter your administration password");
 
 		passFrame.setSize(400, 250);
