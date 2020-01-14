@@ -9,9 +9,6 @@ This program has been created in order to maintain the most beneficial for the c
 * [Maven]()
 * [Sql](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/SQLQueryforProgrammingII.sql)
 
-## Extra Tools
-* [Javadoc]()
-
 ## Authors 
 | Members |
 | --- |
