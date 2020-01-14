@@ -118,7 +118,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 
 		JLabel Label = new JLabel();
 		JLabel textlabel = new JLabel("Enter the password", SwingConstants.CENTER);
-		textlabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		textlabel.setFont(new Font("SansSerif Bold", Font.PLAIN, 20));
 		passFrame.setResizable(false);
 		JPanel Panel = new JPanel();
 		Image passimg = new ImageIcon(this.getClass().getResource("/password.png")).getImage();
