@@ -11,9 +11,9 @@ This program has been created in order to maintain the most beneficial for the c
 
 ## Installation
 To create the .jar file:
-'''bash
+΄΄΄bash
 
-'''
+΄΄΄
 
 ## Authors 
 | Member |
