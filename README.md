@@ -1,5 +1,4 @@
 # ProgrammingII Java Project
-Java Project
 
 ![Logo](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/logo%20page.jpg)
 
