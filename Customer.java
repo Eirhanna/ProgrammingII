@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Figuring out which customer has to take an offer by evaluating his fees and
+ * Figure out which customer has to take an offer by evaluating his fees and
  * the fact that he might have already taken an offer.
  * 
  * @author Vasiliki Chalkiopoulou
@@ -26,7 +26,7 @@ public class Customer extends NewPurchasesSeparation {
 	NewPurchasesSeparation objectOfNewPurchasesSeparation = new NewPurchasesSeparation();
 
 	/**
-	 * This method calculates the total fees of every old customer including thos
+	 * This method calculates the total fees of every old customer including those
 	 * that exist in the data base.
 	 */
 	public void addTheNewFees() {
@@ -157,7 +157,7 @@ public class Customer extends NewPurchasesSeparation {
 
 	}
 
-	// Default cinstructor.
+	// Default constructor.
 	public Customer() {
 	}
 
