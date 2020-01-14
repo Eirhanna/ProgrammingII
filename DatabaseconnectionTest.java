@@ -1,5 +1,6 @@
 package javaProg2;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -15,27 +16,28 @@ import org.junit.jupiter.api.Test;
 
 public class DatabaseconnectionTest {
 
-	/** Statement of the static fields */
-	private static Double t_fees;
-	private static Double min_fees;
-	private static String mail;
-	private static String name;
+	/** Statement of the fields */
+	private Double t_fees;
+	private Double min_fees;
+	private String mail;
+	private String name;
 
 	@Test
 	public void test() {
 		// Given
-		t_fees = 8830.7;
-		min_fees = 503.6;
-		mail = "nikiboura@gmail.com";
-		name = "Niki Boura";
+		t_fees = 5251.55; //The first total fee that the query returns in the data base
+		min_fees = 405.80; //The first minimum fee that the query returns in the data base
+		mail = "AntonisK@hotmail.com"; //The first mail that the query returns in the data base
+		name = "Antonis Kuriakou"; //The first name that the query returns in the data base
+		Databaseconnection objectOfDatabaseconnectionClass = new Databaseconnection();
 
 		// When
-		Databaseconnection.main();
-		Databaseconnection b = new Databaseconnection();
-		String name1 = b.getName(); // It returns the last name that the list "totalFees" contains.
-		String mail1 = b.getMail(); // It returns the last mail that the list "totalFees" contains.
-		Float min_fees1 = b.getMin_fees(); // It returns the last minimum fee that the list "totalFees" contains.
-		Float t_fees1 = b.getT_fees(); // It returns the last summary of fees that the list "totalFees" contains.
+		
+		objectOfDatabaseconnectionClass.dbconnection();
+		String name1 = objectOfDatabaseconnectionClass.getTotalFees().get(0).getName(); // It returns the first name that the list "totalFees" contains.
+		String mail1 = objectOfDatabaseconnectionClass.getTotalFees().get(0).getMail(); // It returns the first mail that the list "totalFees" contains.
+		Double min_fees1 = objectOfDatabaseconnectionClass.getTotalFees().get(0).getMin_fees(); // It returns the first minimum fee that the list "totalFees" contains.
+		Double t_fees1 = objectOfDatabaseconnectionClass.getTotalFees().get(0).getT_fees(); // It returns the first summary of fees that the list "totalFees" contains.
 		String input = name1 + mail1 + min_fees1 + t_fees1;
 		String expected = name + mail + min_fees + t_fees;
 

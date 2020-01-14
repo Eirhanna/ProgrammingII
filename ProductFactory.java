@@ -1,9 +1,11 @@
-package ProgrammingII;
+package javaProg2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.JOptionPane;
 /**
  * This class refers to the stock of the company.
  * It creates a map that includes the stock and finds the sell period of it.
@@ -13,7 +15,7 @@ public class ProductFactory {
 	/** It includes the stock of the company */
 	private static Map<String,List<Product>> allProducts = new HashMap<>();
 	/** Represents the demand cost for the company to sell the last's year products based on accounting terms. */
-	private static double costSold = 0;
+	private static double costSold;
 
 	/** 
 	 * Defines a product the company bought.
@@ -22,10 +24,10 @@ public class ProductFactory {
 	 * sell period of the product which is the needed expected period to pass for the product to be sold.
 	 * Then it adds the stock to a map called allProducts.
 	 */
-	public Product purchaseOfStock(String name, String code, int quantity, int day, int month, int year, double price) {
+	public static Product purchaseOfStock(String name, String code, int quantity, int day, int month, int year, double price) {
 		double sellPeriod = findSellPeriod(quantity, costSold); // findSellPeriod method is called in order to calculate and save the sell period of the product
 		Product newProduct = new Product(name, code, quantity, day, month, year, price, sellPeriod);
-		
+
 		/*
 		 * Checks if the stock the company bought already exists in the map.
 		 * If yes, it modifies the proper item in order to include the new one.
@@ -39,7 +41,6 @@ public class ProductFactory {
 			value.add(newProduct);
 			allProducts.put(newProduct.getName(), value);
 		}
-		
 		return newProduct;
 	}
 	
@@ -52,16 +53,20 @@ public class ProductFactory {
 	 * Calculates the sell period based on accounting types, unless the quantity nor the costSold are equal to zero.
 	 * If at least one of them is zero the sell period cannot be calculated and it will be set as zero as well.
 	 */
-	public double findSellPeriod(int quantity, double costSold) {
+	public static double findSellPeriod(int quantity, double costSold) {
 		if(quantity != 0 && costSold != 0) {
 			double ratio = costSold / quantity; // Calculation of Stock Turnover Ratio based on accounting types
 			return 360 / ratio; // Calculation of stock sale period based on accounting types
 		}else {
-			System.out.println("Sell period cannot be calculated. Setting it to 0...");
+			JOptionPane.showMessageDialog(null, "Sell period cannot be calculated. Setting it to 0...");
 			return 0;
 		}
 	}
-
+	
+	public static double getCostSold() {
+		return costSold;
+	}
+	
 	public static void setCostSold(double cost) {
 		costSold = cost;
 	}	

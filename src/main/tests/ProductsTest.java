@@ -1,5 +1,4 @@
 package ProgrammingII;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
@@ -84,7 +83,7 @@ public class ProductsTest {
 		expected.add(product2);
 		
 		//When
-		products.reduceStocksQuantity(quantity, input );
+		products.reduceProductsQuantity(quantity, input );
 		System.out.println(input);
 		System.out.println(expected);
 		
@@ -112,7 +111,7 @@ public class ProductsTest {
 		expected.add(product2);
 		
 		//When
-		products.reduceStocksQuantity(quantity, input );
+		products.reduceProductsQuantity(quantity, input );
 		System.out.println(input);
 		System.out.println(expected);
 		
@@ -143,11 +142,62 @@ public class ProductsTest {
 		expected.add(product2);
 		
 		//When
-		products.reduceStocksQuantity(quantity, input );
+		products.reduceProductsQuantity(quantity, input );
 		System.out.println(input);
 		System.out.println(expected);
 		
 		//Then
 		assertEquals(input.toString(), expected.toString());
+	}
+	@Test
+	public void createListofProductsPassedTheSellPeriodTesta() {
+		
+		//Given
+		List<Product> input = new ArrayList<>();
+		boolean expected = true; 
+		Product producta = new Product("Test", "code", 22, 15, 1, 2019, 12.021, 1.0);
+		
+		input.add(producta);
+		
+		int length_t0 = input.size();
+		
+		//When
+		products.createListofProductsPassedTheSellPeriod();
+		
+		boolean c;
+		int length_t1 = input.size();
+		if (length_t0 == length_t1) {
+			c = false;
+			
+		}
+		
+		//then
+		assertEquals(c, expected);
+		
+	}
+	@Test
+	public void createListofProductsPassedTheSellPeriodTestb() {
+		
+		//Given
+		List<Product> input = new ArrayList<>();
+		boolean expected = true; 
+		Product productb = new Product("Test", "code", 22, 15, 1, 2019, 12.021, 100000000.0);
+		input.add(productb);
+		
+		int length_t0 = input.size();
+		
+		//When
+		products.createListofProductsPassedTheSellPeriod();
+		
+		boolean c;
+		int length_t1 = input.size();
+		if (length_t0 == length_t1) {
+			c = true;
+			
+		}
+		
+		//then
+		assertEquals(c, expected);
+		
 	}
 }
