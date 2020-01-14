@@ -1,258 +1,347 @@
 import java.awt.*;
+import sun.audio.*;
 import java.awt.event.*;
+import java.awt.EventQueue;
 import javax.swing.*;
+import java.io.*;
+import java.util.InputMismatchException;
 
+/**
+ * This class creates in GUI the main menu. First it creates a verification
+ * JFrame to enter a password and then it presents the main menu JFrame with the
+ * four options
+ */
 public class OptionMenu extends JFrame implements ActionListener {
-	// name the options of main menu
+	/** Represents the JMenu items in the main menu's options */
 	private JMenuItem item1 = new JMenuItem("1.Set the cost of sold items");
 	private JMenuItem item2 = new JMenuItem("2.Buy product's stock");
 	private JMenuItem item3 = new JMenuItem("3.Add customer's purchase");
 	private JMenuItem item4 = new JMenuItem("4.Make an offer");
-	private JMenuItem item5 = new JMenuItem("5.Calculate known data");
-	private JMenuItem item6 = new JMenuItem("6.Insert a csv file");
-	JMenu menu1;
-	int quantOfProduct, quant2, quant3, quant4, quant5, quant6, quant7, quant8, quant9;
-	String nameOfProuct;
-	ProductFactory objectOfProductFactory = new ProductFactory();
+	/** Represents the correct password of our user */
+	private static String password = "pass";
+	/**
+	 * Represents the quantity of the product that the user will select when he
+	 * clicks in option 3
+	 */
+	int quantOfProduct;
+	/** Represents the user's choice in a JOptionPane */
+	int choice;
+	/**
+	 * Represents the name of the product that the user will select when he clicks
+	 * in option 3
+	 */
+	String nameOfProduct;
+	/** Represents the path of the csv file */
+	String path;
+	/** Initializes objects of other classes in order to call their methods */
+	Databaseconnection objectOfDatabaseconnectionClass = new Databaseconnection();
+	ProductFactory objectOfProductFactoryClass = new ProductFactory();
+	NewPurchasesSeparation objectOfNewPurchasesSeparationClass = new NewPurchasesSeparation();
+	Products objectOfProductsClass = new Products();
+	CsvNewPurchases objectOfCsvNewPurchasesClass = new CsvNewPurchases();
+	Customer objectOfCustomerClass = new Customer();
+	Gifts objectOfGiftsClass;
+	/**
+	 * Represents the name, code, quantity, day, month , year, price and cost of the
+	 * product in option 2 of the main menu
+	 */
+	String name, code;
+	int quantity, day, month, year;
+	double price, cost;
+	/**
+	 * Represents the number of gifts that the user wants to make in option 4 of the main menu 
+	 */
+	int numberOfGifts;
 
-	// constructor
+	boolean continueLoop = true;
+	boolean continueLoop10 = true;
+	boolean continueLoop11 = true;
+	boolean continueLoop12 = true;
+	boolean continueLoop13 = true;
+	boolean continueLoop14 = true;
+	boolean continueLoop15 = true;
+	boolean continueLoop16 = true;
+	boolean continueLoop17 = true;
+	boolean continueLoop18 = true;
+
+	/**
+	 * Constructor
+	 */
 	public OptionMenu() {
-		// menu
-		JFrame F = new JFrame("Menu");
+
+		// create the main menu
+		JFrame F = new JFrame("Main Menu");
 		JMenuBar menubar = new JMenuBar();
-		menu1 = new JMenu("Select option!");
+
+		JMenu menu1 = new JMenu("Select option!");
 		menubar.add(menu1);
+		menubar.setPreferredSize(new Dimension(100, 40));
+		menu1.setFont(new Font("sans-serif", Font.PLAIN, 20));
+		item1.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		item2.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		item3.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		item4.setFont(new Font("sans-serif", Font.PLAIN, 17));
+		menu1.setOpaque(true);
+		menu1.setBackground(new java.awt.Color(255, 229, 156));
 
 		// add action listener
 		item1.addActionListener(this);
 		item2.addActionListener(this);
 		item3.addActionListener(this);
 		item4.addActionListener(this);
-		item5.addActionListener(this);
-		item6.addActionListener(this);
 
 		// add items to menu
 		menu1.add(item1);
 		menu1.add(item2);
 		menu1.add(item3);
 		menu1.add(item4);
-		menu1.add(item5);
-		menu1.add(item6);
 
-		// set size,location and make visible
+		// set size,location
 		F.setJMenuBar(menubar);
 		F.pack();
 		F.setLocationRelativeTo(null);
-		F.setSize(550, 500);
+		F.setSize(820, 600);
 		JLabel label = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/image.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/menu.png")).getImage();
 		label.setIcon(new ImageIcon(img));
 		label.setBounds(450, 300, 13, 35);
 		F.getContentPane().add(label);
-		F.setVisible(true);
+		F.pack();
+		F.setLocationRelativeTo(null);
+
+		// create the password frame
+		JFrame passFrame = new JFrame("Enter your administration password");
+
+		passFrame.setSize(400, 200);
+		passFrame.setDefaultCloseOperation(passFrame.EXIT_ON_CLOSE);
+		passFrame.setLocationRelativeTo(null);
+
+		JLabel Label = new JLabel();
+		JPanel Panel = new JPanel();
+		Panel.setBounds(200, 200, 50, 20);
+		passFrame.add(Panel);
+
+		JPasswordField pass = new JPasswordField(10);
+		pass.setEchoChar('*');
+		pass.setBounds(200, 200, 50, 20);
+		passFrame.setVisible(true);
+
+		pass.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				JPasswordField input = (JPasswordField) ae.getSource();
+				char[] pd = input.getPassword();
+				String p = new String(pd);
+				if (p.contentEquals(password)) {
+					try {
+						JOptionPane.showMessageDialog(null, "Correct password");
+						String mail = JOptionPane.showInputDialog("Please insert your e-mail");
+					} catch (NullPointerException e) {
+						JOptionPane.showMessageDialog(null, "Please insert your e-mail");
+					}
+					F.setVisible(true);
+					passFrame.dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Wrong password");
+					System.exit(0);
+				}
+			}
+		});
+		Panel.add(Label);
+		Panel.add(pass);
 
 		// create the submenu of customer's purchase option
 		JFrame F2 = new JFrame("Click a product");
 		F2.setLocationRelativeTo(null);
-		F2.setSize(500, 500);
+		F2.setSize(500, 370);
 		JPanel panel2 = new JPanel();
 		F2.add(panel2);
-		F2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// create and add the buttons
-		ImageIcon Product1 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\hat1.png");
-		ImageIcon Product2 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\Careers.png");
-		ImageIcon Product3 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\t-shirt.png");
-		ImageIcon Product4 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\Bow_tie.png");
-		ImageIcon Product5 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\hat2.png");
-		ImageIcon Product6 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\dress.png");
-		ImageIcon Product7 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\m_jacket.png");
-		ImageIcon Product8 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\heels.png");
-		ImageIcon Product9 = new ImageIcon("C:\\Users\\nmpoura\\eclipse-workspace\\Java_Prog2\\image\\earings.png");
-		JButton b5 = new JButton("Product1", Product1); // change names
-		JButton b6 = new JButton("Product2", Product2);
-		JButton b7 = new JButton("Product3", Product3);
-		JButton b8 = new JButton("Product4", Product4);
-		JButton b9 = new JButton("Product5", Product5);
-		JButton b10 = new JButton("Product6", Product6);
-		JButton b11 = new JButton("Product7", Product7);
-		JButton b12 = new JButton("Product8", Product8);
-		JButton b13 = new JButton("Product9", Product9);
+		ImageIcon Product1 = new ImageIcon(this.getClass().getResource("/toybox1.png"));
+		ImageIcon Product2 = new ImageIcon(this.getClass().getResource("/ball.png"));
+		ImageIcon Product3 = new ImageIcon(this.getClass().getResource("/toybox2.png"));
+		ImageIcon Product4 = new ImageIcon(this.getClass().getResource("/car.png"));
+		ImageIcon Product5 = new ImageIcon(this.getClass().getResource("/duck.png"));
+		ImageIcon Product6 = new ImageIcon(this.getClass().getResource("/train.png"));
+		ImageIcon Product7 = new ImageIcon(this.getClass().getResource("/zebra.png"));
+		ImageIcon Product8 = new ImageIcon(this.getClass().getResource("/teddy-bear.png"));
+		JButton button5 = new JButton("  Doll and  Bear Toybox", Product1);
+		JButton button6 = new JButton("  Colourfull Ball ", Product2);
+		JButton button7 = new JButton("Grand Surprise ToyBox ", Product3);
+		JButton button8 = new JButton("HotWheels Car ", Product4);
+		JButton button9 = new JButton("Stuffed Duck Abie", Product5);
+		JButton button10 = new JButton("Train Pollar Express", Product6);
+		JButton button11 = new JButton("Stuffed Zebra Martin", Product7);
+		JButton button12 = new JButton("Teddy Bear Molly", Product8);
 		setLayout(new FlowLayout());
-		add(b5);
-		add(b6);
-		panel2.add(b5);
-		panel2.add(b6);
-		panel2.add(b7);
-		panel2.add(b8);
-		panel2.add(b9);
-		panel2.add(b10);
-		panel2.add(b11);
-		panel2.add(b12);
-		panel2.add(b13);
-		b5.setBounds(250, 250, 120, 35);
-		b5.addActionListener(this);
+		add(button5);
+		add(button6);
+		panel2.add(button5);
+		panel2.add(button6);
+		panel2.add(button7);
+		panel2.add(button8);
+		// panel2.add(b9);
+		panel2.add(button9);
+		panel2.add(button10);
+		panel2.add(button11);
+		panel2.add(button12);
+		button5.setBounds(250, 250, 120, 35);
 
-		// add ActionListeners to the product buttons b5-b13
-		// handles actions for option3
-		// when you click on a product a window appears to insert quantity 
-		b5.addActionListener(new ActionListener() {
+		// add ActionListeners to the buttons
+		button5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
+					try {
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "Doll and  Bear Toybox";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
+					} catch (NullPointerException e) {
+						JOptionPane.showMessageDialog(null, "you didn't insert the data");
+					}
+				}
+			}
+		});
+		button6.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
+					try {
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "Doll and  Bear Toybox";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
+					} catch (NullPointerException e) {
+						JOptionPane.showMessageDialog(null, "you didn't insert the data");
+					}
 				}
 			}
+
 		});
-		b7.addActionListener(new ActionListener() {
+		button7.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-				}
+				continueLoop = true;
+				do {
+					try {
+						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
+						nameOfProduct = "Grand Surprise ToyBox";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+					} catch (NumberFormatException ex) {
+						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+					}
+					continueLoop = false;
+				} while (continueLoop);
 			}
+
 		});
-		b8.addActionListener(new ActionListener() {
+		button8.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-				}
+				continueLoop = true;
+				do {
+					try {
+						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
+						nameOfProduct = "HotWheels Car";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+					} catch (NumberFormatException ex) {
+						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+					}
+					continueLoop = false;
+				} while (continueLoop);
 			}
 		});
-		b9.addActionListener(new ActionListener() {
+		button9.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-				}
+				continueLoop = true;
+				do {
+					try {
+						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
+						nameOfProduct = "Stuffed Duck Abie";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+					} catch (NumberFormatException ex) {
+						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+					}
+					continueLoop = false;
+				} while (continueLoop);
 			}
 		});
-		b10.addActionListener(new ActionListener() {
+		button10.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-				}
+				continueLoop = true;
+				do {
+					try {
+						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
+						nameOfProduct = "Train Pollar Express";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+					} catch (NumberFormatException ex) {
+						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+					}
+					continueLoop = false;
+				} while (continueLoop);
 			}
 		});
-		b11.addActionListener(new ActionListener() {
+		button11.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-				}
+				continueLoop = true;
+				do {
+					try {
+						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
+						nameOfProduct = "Stuffed Zebra Martin";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+					} catch (NumberFormatException ex) {
+						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+					}
+					continueLoop = false;
+				} while (continueLoop);
 			}
 		});
-		b12.addActionListener(new ActionListener() {
+		button12.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-				}
-			}
-		});
-		b13.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				{
-					quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-				}
-			}
-		});
-
-		// add ActionListener for the new frame F2 for clicking the product
-		// when you press option 3 a new frame appears
-		item3.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				{
-					F2.setVisible(true);
-
-				}
-			}
-		});
-
-		// create the frame for calculation's option
-		JFrame F3 = new JFrame("Calculation of data");
-		F3.setLocationRelativeTo(null);
-		F3.setSize(500, 500);
-		JPanel panel3 = new JPanel();
-		F3.add(panel3);
-		F3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// add ActionListener for the new frame F3 for calculation of data
-		// when you press option 5 a new frame appears
-		item5.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				{
-					F3.setVisible(true);
-				}
-			}
-		});
-
-		// create and add the buttons and add them to F3 Frame
-		JButton button1 = new JButton("best customers");
-		JButton button2 = new JButton("total cost");
-		JButton button3 = new JButton("total sells");
-		JButton button4 = new JButton("Show all the stock");
-		panel3.add(button1);
-		panel3.add(button2);
-		panel3.add(button3);
-		panel3.add(button4);
-		button1.setBounds(250, 250, 120, 35);
-
-		// add ActionListeners to the buttons
-		// when you click an option a window appears saying 'hi'
-		// here we want to call the methods for calculating the data in every option 
-		button1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				{
-					JOptionPane.showMessageDialog(null, "hi");
-				}
-			}
-		});
-		button2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				{
-					JOptionPane.showMessageDialog(null, "hi");
-				}
-			}
-		});
-		button3.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				{
-					JOptionPane.showMessageDialog(null, "hi");
-				}
-			}
-		});
-		button4.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				{
-					objectOfProductFactory.showAllProdutcs();
-				}
+				continueLoop = true;
+				do {
+					try {
+						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
+						nameOfProduct = "Teddy Bear Molly";
+						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
+					} catch (NumberFormatException ex) {
+						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+					}
+					continueLoop = false;
+				} while (continueLoop);
 			}
 		});
 
 		// add ActionListener for the new frame F2
-		// when you press option 3 a new frame appears 
 		item3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -261,116 +350,111 @@ public class OptionMenu extends JFrame implements ActionListener {
 				}
 			}
 		});
+
+		// add ActionListeners to the buttons
+
 	}
-	boolean continueLoop1 = true;
-	boolean continueLoop2 = true;
-	boolean continueLoop3 = true;
-	boolean continueLoop4 = true;
-	boolean continueLoop5 = true;
-	boolean continueLoop6 = true;
-	boolean continueLoop7 = true;
-	boolean continueLoop8 = true;
-	boolean continueLoop9 = true;
-	String name, code;
-	int quantity, day, month, year;
-	double price, cost;
 
 	// Handles actions based in option
-	public void actionPerformed(ActionEvent event) throws NullPointerException {
+	public void actionPerformed(ActionEvent event) throws NumberFormatException {
 		if (event.getSource() == item1) {
+			// ImageIcon icon = new ImageIcon("src/image/download.png");
 			do {
 				try {
 					cost = Double.parseDouble(JOptionPane.showInputDialog("Please insert the cost: "));
 					ProductFactory.setCostSold(cost);
-					continueLoop1 = false;
-				} catch (NullPointerException e) {
-					System.exit(0);
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Sorry...invalid input was insert! Please try again.");
+					JOptionPane.showInputDialog(null, "Sorry...invalid input was insert! Please try again.");
+				} catch (NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "The cost sold is equal to zero...");
 				}
-			} while (continueLoop1);
+				continueLoop10 = false;
+			} while (continueLoop10);
 		} else if (event.getSource() == item2) {
 			do {
-				try {
-					name = JOptionPane.showInputDialog("Please insert the name ");
-					continueLoop2 = false;
-				} catch (NullPointerException e) {
-					System.exit(0);
-				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Sorry...invalid name was insert! Please try again.");
+				name = JOptionPane.showInputDialog("Please insert the name ");
+				if (name == " ") {
+					JOptionPane.showInputDialog("Please insert the name ");
+				} else {
+					continueLoop11 = false;
 				}
-			} while (continueLoop2);
+			} while (continueLoop11);
 			do {
 				try {
 					code = JOptionPane.showInputDialog("Please insert the code ");
-					continueLoop3 = false;
-				} catch (NullPointerException e) {
+				} catch (NumberFormatException e) {
 					System.exit(0);
 				}
-			} while (continueLoop3);
+				continueLoop12 = false;
+			} while (continueLoop12);
 
 			do {
 				try {
 					quantity = Integer.parseInt(JOptionPane.showInputDialog("Please insert the quantity "));
-					continueLoop4 = false;
 				} catch (NullPointerException e) {
 					System.exit(0);
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Sorry...invalid quantity was insert! Please try again.");
+					JOptionPane.showInputDialog(null, "Sorry...invalid quantity was insert! Please try again.");
 				}
-			} while (continueLoop4);
+				continueLoop13 = false;
+			} while (continueLoop13);
 
 			do {
 				try {
 					day = Integer.parseInt(JOptionPane.showInputDialog("Please insert the day "));
-					continueLoop5 = false;
 				} catch (NullPointerException e) {
 					System.exit(0);
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Sorry...invalid day was insert! Please try again.");
+					JOptionPane.showInputDialog(null, "Sorry...invalid day was insert! Please try again.");
 				}
-			} while (continueLoop5);
+				continueLoop14 = false;
+			} while (continueLoop14);
 
 			do {
 				try {
 					month = Integer.parseInt(JOptionPane.showInputDialog("Please insert the month "));
-					continueLoop6 = false;
 				} catch (NullPointerException e) {
 					System.exit(0);
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Sorry...invalid month insert! Please try again.");
+					JOptionPane.showInputDialog(null, "Sorry...invalid month insert! Please try again.");
 				}
-			} while (continueLoop6);
+				continueLoop15 = false;
+			} while (continueLoop15);
 			do {
 				try {
 					year = Integer.parseInt(JOptionPane.showInputDialog("Please insert the year"));
-					continueLoop7 = false;
 				} catch (NullPointerException e) {
 					System.exit(0);
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Sorry...invalid year was insert! Please try again.");
+					JOptionPane.showInputDialog(null, "Sorry...invalid year was insert! Please try again.");
 				}
-			} while (continueLoop7);
+				continueLoop16 = false;
+			} while (continueLoop16);
 			do {
 				try {
 					price = Double.parseDouble(JOptionPane.showInputDialog("Please insert the price "));
-					continueLoop8 = false;
 				} catch (NullPointerException e) {
 					System.exit(0);
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Sorry...invalid price was insert! Please try again.");
+					JOptionPane.showInputDialog(null, "Sorry...invalid price was insert! Please try again.");
 				}
-			} while (continueLoop8);
+				continueLoop17 = false;
+			} while (continueLoop17);
 
-			objectOfProductFactory.purchaseOfStock(name, code, quantity, day, month, year, price);
+			ProductFactory.purchaseOfStock(name, code, quantity, day, month, year, price);
+			System.out.println(ProductFactory.getAllProducts());
 			JOptionPane.showMessageDialog(null, "Thank you!!");
 
 		} else if (event.getSource() == item4) {
-
+			objectOfDatabaseconnectionClass.dbconnection();
+			String path = (JOptionPane.showInputDialog("Please insert the path of the csv file: "));
+			objectOfCsvNewPurchasesClass.saveCsvData(path);
+			objectOfNewPurchasesSeparationClass.separateCustomers();
+			objectOfCustomerClass.findsCustomersThatDeserveAnOffer();
+			objectOfGiftsClass = new Gifts();
+			objectOfGiftsClass.findGiftsReceivers(objectOfCustomerClass.getNewoffered(),
+					objectOfProductsClass.createListofProductsPassedTheSellPeriod());
 		}
 	}
 
-	public static void main(String[] args) {
-		new OptionMenu();
-	}
 }
