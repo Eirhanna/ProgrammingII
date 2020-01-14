@@ -17,5 +17,4 @@ class SendUserEmailTest {
 
 		b.sendUserMail(nameOfUser, mailOfUser, mails, names, prods);
 	}
-
 }
