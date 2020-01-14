@@ -25,6 +25,7 @@ public class Gifts {
 	private int numberOfPoductsAsGifts;
 	private int numberOfPossibleGifts;
 	int numberOfGifts;
+	private InfoMail objectOfInfoMailClass; // create an object of the class InfoMail
 	static String namesOfCustomersForGifts[];
 	static String mailsOfCustomersForGifts[];
 	static String namesOfProductsAsGifts[];
@@ -82,6 +83,15 @@ public class Gifts {
 		JOptionPane.showMessageDialog(null,
 				"You can make up to " + (numberOfPossibleGifts) + " gifts to your most valuable customers.");
 		int numberOfGifts = Integer.parseInt(JOptionPane.showInputDialog("How many gifts do you wish to make?"));
+		if (numberOfGifts > numberOfPossibleGifts) {
+			do {
+				Integer.parseInt(JOptionPane
+						.showInputDialog("You can't make so many gifts. The maximum amount of gifts you can make is "
+								+ (numberOfPossibleGifts)));
+				numberOfGifts = Integer
+						.parseInt(JOptionPane.showInputDialog("How many gifts do you wish to make?"));
+			} while (numberOfGifts > numberOfPossibleGifts);
+		}
 		return numberOfGifts;
 	}
 
