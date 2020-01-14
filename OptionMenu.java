@@ -49,7 +49,8 @@ public class OptionMenu extends JFrame implements ActionListener {
 	int quantity, day, month, year;
 	double price, cost;
 	/**
-	 * Represents the number of gifts that the user wants to make in option 4 of the main menu 
+	 * Represents the number of gifts that the user wants to make in option 4 of the
+	 * main menu
 	 */
 	int numberOfGifts;
 
@@ -128,7 +129,6 @@ public class OptionMenu extends JFrame implements ActionListener {
 		Panel.setBounds(200, 200, 50, 20);
 		Panel.add(textlabel);
 		passFrame.add(Panel);
-		
 
 		JPasswordField pass = new JPasswordField(10);
 		pass.setEchoChar('*');
@@ -146,7 +146,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 					try {
 						JOptionPane.showMessageDialog(null, "Correct password");
 						String mail = JOptionPane.showInputDialog("Please insert your e-mail");
-					} catch (NullPointerException e) {
+					} catch (NumberFormatException e) {
 						JOptionPane.showMessageDialog(null, "Please insert your e-mail");
 					}
 					F.setVisible(true);
@@ -191,7 +191,6 @@ public class OptionMenu extends JFrame implements ActionListener {
 		panel2.add(button6);
 		panel2.add(button7);
 		panel2.add(button8);
-		// panel2.add(b9);
 		panel2.add(button9);
 		panel2.add(button10);
 		panel2.add(button11);
