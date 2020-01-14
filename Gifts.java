@@ -12,7 +12,7 @@ import java.util.Comparator;
 /**
  * Calculate the gifts that will be send.
  * This class calculates the maximum number of gifts that can be send, asks the customer company how many of those gifts they wish 
- * to make, sends to the customers that have the biggest fees the products that are the most expensive as gifts
+ * to make, sends to the customers that have the biggest fees an email at the same time telling them what product will be gifted to them and keeps the list of the customers that have received a gift updated in the database
  * @author Maria Aspasia Stefadourou.
  */
 
@@ -20,13 +20,13 @@ public class Gifts {
 		private int numberOfPoductsAsGifts; 
 		private int numberOfPossibleGifts;
 		int numberOfGifts;
-		private InfoMail objectOfInfoMailClass;
+		private InfoMail objectOfInfoMailClass; //create an object of the class InfoMail
 		static String namesOfCustomersForGifts[];
 		static String mailsOfCustomersForGifts[];
 		static String namesOfProductsAsGifts[];
-		SendEmail objectOfSendEmailClass;
-		Products objectOfProductsClass = new Products();
+		Products objectOfProductsClass = new Products(); //create an object of the class Products
 		ArrayList<Product> productsPassedTheSellPeriod = objectOfProductsClass.createListofProductsPassedTheSellPeriod();
+		EmailThreads objectOfEmailThreadsClass = new EmailThreads(); //create an object of the class EmailThreads
 		int sizeOfnewoffered = Customer.newoffered.size();
 	
 		/**
@@ -110,32 +110,35 @@ public class Gifts {
 		 */
 		public void  findGiftsReceivers(ArrayList<NewPurchasesSeparation> newoffered,
 			ArrayList<Product> productsPassedTheSellPeriod) throws Exception {
-			sortMyListBasedOnThePrice(productsPassedTheSellPeriod);
-			sortMyListBasedOnTheTotalFees(newoffered);
-			askNumberOfGifts();
-			//if our company customer wants to send gifts to their most valuable customers 
-			if (numberOfGifts != 0) {
-			namesOfCustomersForGifts = new String[numberOfGifts];
-			mailsOfCustomersForGifts = new String[numberOfGifts];
-			namesOfProductsAsGifts = new String[numberOfGifts];
-			final int INDEX = 0;
-			Product ProductToBeGifted = productsPassedTheSellPeriod.get(INDEX); //the fist of the list of products
-			for (int i = 0; i < numberOfGifts; i++) {
-				if (ProductToBeGifted.getQuantity() > 1) {
-					//if the quantity of the first product of the list is more than one the product is gifted and the quantity of that product is reduced by one in the list 
-					namesOfProductsAsGifts[i] = ProductToBeGifted.getName();
-					ProductToBeGifted.setQuantity(ProductToBeGifted.getQuantity() - 1);
-				} else if (ProductToBeGifted.getQuantity() == 1){
-					//if the quantity of the first product of the list is equal to one the product is gifted and the product is removed from the list 
-					namesOfProductsAsGifts[i] = ProductToBeGifted.getName();
-					productsPassedTheSellPeriod.remove(INDEX);
+			//checks if there are any products over the sell period to offer as gifts
+			if (productsPassedTheSellPeriod.size() != 0) {
+				sortMyListBasedOnThePrice(productsPassedTheSellPeriod);
+				sortMyListBasedOnTheTotalFees(newoffered);
+				askNumberOfGifts();
+				if (numberOfGifts != 0) {
+				namesOfCustomersForGifts = new String[numberOfGifts];
+				mailsOfCustomersForGifts = new String[numberOfGifts];
+				namesOfProductsAsGifts = new String[numberOfGifts];
+				final int INDEX = 0;
+				Product ProductToBeGifted = productsPassedTheSellPeriod.get(INDEX); //the fist of the list of products
+				for (int i = 0; i < numberOfGifts; i++) {
+					if (ProductToBeGifted.getQuantity() > 1) {
+						//if the quantity of the first product of the list is more than one the product is gifted and the quantity of that product is reduced by one in the list 
+						namesOfProductsAsGifts[i] = ProductToBeGifted.getName();
+						ProductToBeGifted.setQuantity(ProductToBeGifted.getQuantity() - 1);
+					} else if (ProductToBeGifted.getQuantity() == 1){
+						//if the quantity of the first product of the list is equal to one the product is gifted and the product is removed from the list 
+						namesOfProductsAsGifts[i] = ProductToBeGifted.getName();
+						productsPassedTheSellPeriod.remove(INDEX);
+					}
+					namesOfCustomersForGifts[i] = newoffered.get(i).getNewName();
+					mailsOfCustomersForGifts[i] = newoffered.get(i).getNewMail();
+					updateOfferedInDataBase(Customer.newoffered.get(i).getNewName(),Customer.newoffered.get(i).getNewMail()); //updates in the database the list of customers that have received a gift
 				}
-				namesOfCustomersForGifts[i] = newoffered.get(i).getNewName();
-				mailsOfCustomersForGifts[i] = newoffered.get(i).getNewMail();
-				updateOfferedInDataBase(Customer.newoffered.get(i).getNewName(),Customer.newoffered.get(i).getNewMail());
-			}
-			objectOfSendEmailClass = new SendEmail();
-			objectOfSendEmailClass.sendMail(mailsOfCustomersForGifts, namesOfCustomersForGifts, namesOfProductsAsGifts);
+				objectOfEmailThreadsClass.generateThreads(numberOfGifts, mailsOfCustomersForGifts, namesOfCustomersForGifts, namesOfProductsAsGifts); //calls the method that sends the email to the customers with the use of Threads
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "You can't make any gifts, there aren't any products passed the sell period");
 			}
 		}
 		
@@ -174,7 +177,9 @@ public class Gifts {
 
 		}
 		
-		
+		/*
+		 * Below are generated getters and setters of every array of information
+		 */
 		public static String[] getNamesOfCustomersForGifts() {
 			return namesOfCustomersForGifts;
 		}
@@ -206,7 +211,8 @@ public class Gifts {
 		public void setObjectOfInfoMailClass(InfoMail objectOfInfoMailClass) {
 			this.objectOfInfoMailClass = objectOfInfoMailClass;
 		}
-
+		
+		// Default cinstructor.
 		public Gifts() {
 			
 		}
