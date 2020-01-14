@@ -24,7 +24,7 @@ public class Customer extends NewPurchasesSeparation {
 	static ArrayList<Customer> offered = new ArrayList<Customer>();
 	Databaseconnection objectOfDatabaseconnectionClass = new Databaseconnection();
 	NewPurchasesSeparation objectOfNewPurchasesSeparation = new NewPurchasesSeparation();
-
+	
 	/**
 	 * This method calculates the total fees of every old customer including those
 	 * that exist in the data base.
@@ -56,7 +56,6 @@ public class Customer extends NewPurchasesSeparation {
 						.equals(Databaseconnection.totalFees.get(k).getName())) {
 					double a = NewPurchasesSeparation.OldCustomers.get(i).getNf() + totalfee.get(k);
 					totalfee.set(k, a);
-
 					// Checks if the new purchase is smaller that the minimun purchase of the
 					// previous year.
 					if (NewPurchasesSeparation.OldCustomers.get(i).getNf() < Databaseconnection.totalFees.get(k)
@@ -68,7 +67,7 @@ public class Customer extends NewPurchasesSeparation {
 			}
 		}
 	}
-
+	
 	/**
 	 * This method ,after having the total amount of expenses of every customer
 	 * finds out if a customer that has thw specific month lower expenses than the
@@ -109,7 +108,7 @@ public class Customer extends NewPurchasesSeparation {
 					}
 					if (found == false) {
 						newf = new NewPurchasesSeparation(Databaseconnection.totalFees.get(i).getName(),
-								Databaseconnection.totalFees.get(i).getMail(), String.valueOf(totalfee.get(i)));
+								Databaseconnection.totalFees.get(i).getMail(), totalfee.get(i));
 						newoffered.add(newf);
 					}
 				}
@@ -117,7 +116,7 @@ public class Customer extends NewPurchasesSeparation {
 		}
 		return newoffered;
 	}
-
+	
 	/**
 	 * This method helps us keep the data of the offered list every time that the
 	 * program runs.
@@ -157,7 +156,6 @@ public class Customer extends NewPurchasesSeparation {
 
 	}
 
-	// Default constructor.
 	public Customer() {
 	}
 
@@ -198,4 +196,5 @@ public class Customer extends NewPurchasesSeparation {
 		this.offeredName = offeredName;
 		this.offeredMail = offeredMail;
 	}
+
 }
