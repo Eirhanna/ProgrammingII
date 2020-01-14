@@ -109,11 +109,10 @@ public class OptionMenu extends JFrame implements ActionListener {
 		F.getContentPane().add(label);
 		F.pack();
 		F.setLocationRelativeTo(null);
-
+		
 		// create the password frame
 		JFrame passFrame = new JFrame("Enter your administration password");
-
-		passFrame.setSize(400, 250);
+		passFrame.setSize(400, 230);
 		passFrame.setDefaultCloseOperation(passFrame.EXIT_ON_CLOSE);
 		passFrame.setLocationRelativeTo(null);
 
@@ -152,7 +151,8 @@ public class OptionMenu extends JFrame implements ActionListener {
 					F.setVisible(true);
 					passFrame.dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Wrong password");
+					JOptionPane.showMessageDialog(passFrame, " Sorry...Wrong Password!", "ERROR",
+							JOptionPane.ERROR_MESSAGE);
 					System.exit(0);
 				}
 			}
