@@ -109,17 +109,26 @@ public class OptionMenu extends JFrame implements ActionListener {
 		F.pack();
 		F.setLocationRelativeTo(null);
 
-		// create the password frame
+			// create the password frame
 		JFrame passFrame = new JFrame("Enter your administration password");
 
-		passFrame.setSize(400, 200);
+		passFrame.setSize(400, 250);
 		passFrame.setDefaultCloseOperation(passFrame.EXIT_ON_CLOSE);
 		passFrame.setLocationRelativeTo(null);
 
 		JLabel Label = new JLabel();
+		JLabel textlabel = new JLabel("Enter the password", SwingConstants.CENTER);
+		textlabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		passFrame.setResizable(false);
 		JPanel Panel = new JPanel();
+		Image passimg = new ImageIcon(this.getClass().getResource("/password.png")).getImage();
+		Label.setIcon(new ImageIcon(passimg));
+		Label.setBounds(200, 50, 13, 35);
+		passFrame.add(Label);
 		Panel.setBounds(200, 200, 50, 20);
+		Panel.add(textlabel);
 		passFrame.add(Panel);
+		
 
 		JPasswordField pass = new JPasswordField(10);
 		pass.setEchoChar('*');
