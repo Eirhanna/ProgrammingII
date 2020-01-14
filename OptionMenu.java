@@ -1,8 +1,10 @@
 import java.awt.*;
 import sun.audio.*;
 import java.awt.event.*;
-import java.awt.EventQueue;
+
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
+
 import java.io.*;
 import java.util.InputMismatchException;
 
@@ -25,14 +27,14 @@ public class OptionMenu extends JFrame implements ActionListener {
 	 */
 	int quantOfProduct;
 	/** Represents the user's choice in a JOptionPane */
-	int choice;
+	int choice, choice1;
 	/**
 	 * Represents the name of the product that the user will select when he clicks
 	 * in option 3
 	 */
 	String nameOfProduct;
 	/** Represents the path of the csv file */
-	String path;
+	String path, mail;
 	/** Initializes objects of other classes in order to call their methods */
 	Databaseconnection objectOfDatabaseconnectionClass = new Databaseconnection();
 	ProductFactory objectOfProductFactoryClass = new ProductFactory();
@@ -41,6 +43,8 @@ public class OptionMenu extends JFrame implements ActionListener {
 	CsvNewPurchases objectOfCsvNewPurchasesClass = new CsvNewPurchases();
 	Customer objectOfCustomerClass = new Customer();
 	Gifts objectOfGiftsClass;
+	UIManager UI = new UIManager();
+	boolean continueLoop = true;
 	/**
 	 * Represents the name, code, quantity, day, month , year, price and cost of the
 	 * product in option 2 of the main menu
@@ -54,22 +58,12 @@ public class OptionMenu extends JFrame implements ActionListener {
 	 */
 	int numberOfGifts;
 
-	boolean continueLoop = true;
-	boolean continueLoop10 = true;
-	boolean continueLoop11 = true;
-	boolean continueLoop12 = true;
-	boolean continueLoop13 = true;
-	boolean continueLoop14 = true;
-	boolean continueLoop15 = true;
-	boolean continueLoop16 = true;
-	boolean continueLoop17 = true;
-	boolean continueLoop18 = true;
-
 	/**
 	 * Constructor
 	 */
 	public OptionMenu() {
-
+		UI.put("OptionPane.background", new ColorUIResource(253, 255, 108));
+		UI.put("Panel.background", new ColorUIResource(253, 255, 108));
 		// create the main menu
 		JFrame F = new JFrame("Main Menu");
 		JMenuBar menubar = new JMenuBar();
@@ -83,7 +77,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 		item3.setFont(new Font("sans-serif", Font.PLAIN, 16));
 		item4.setFont(new Font("sans-serif", Font.PLAIN, 17));
 		menu1.setOpaque(true);
-		menu1.setBackground(new java.awt.Color(255, 229, 156));
+		menu1.setBackground(new java.awt.Color(253, 255, 108));
 
 		// add action listener
 		item1.addActionListener(this);
@@ -103,16 +97,17 @@ public class OptionMenu extends JFrame implements ActionListener {
 		F.setLocationRelativeTo(null);
 		F.setSize(820, 600);
 		JLabel label = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/menu.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/logo page.png")).getImage();
 		label.setIcon(new ImageIcon(img));
 		label.setBounds(450, 300, 13, 35);
 		F.getContentPane().add(label);
 		F.pack();
 		F.setLocationRelativeTo(null);
-		
+
 		// create the password frame
-		JFrame passFrame = new JFrame("Enter your administration password");
-		passFrame.setSize(400, 230);
+		JFrame passFrame = new JFrame("Welcome to Det Gifthub");
+
+		passFrame.setSize(500, 270);
 		passFrame.setDefaultCloseOperation(passFrame.EXIT_ON_CLOSE);
 		passFrame.setLocationRelativeTo(null);
 
@@ -127,13 +122,13 @@ public class OptionMenu extends JFrame implements ActionListener {
 		passFrame.add(Label);
 		Panel.setBounds(200, 200, 50, 20);
 		Panel.add(textlabel);
+		Panel.setBackground(new java.awt.Color(133, 255, 155));
 		passFrame.add(Panel);
 
 		JPasswordField pass = new JPasswordField(10);
 		pass.setEchoChar('*');
 		pass.setBounds(200, 200, 50, 20);
 		passFrame.setVisible(true);
-
 		pass.addActionListener(new ActionListener() {
 
 			@Override
@@ -142,12 +137,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 				char[] pd = input.getPassword();
 				String p = new String(pd);
 				if (p.contentEquals(password)) {
-					try {
-						JOptionPane.showMessageDialog(null, "Correct password");
-						String mail = JOptionPane.showInputDialog("Please insert your e-mail");
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(null, "Please insert your e-mail");
-					}
+					JOptionPane.showMessageDialog(null, "Correct password!");
 					F.setVisible(true);
 					passFrame.dispose();
 				} else {
@@ -215,8 +205,6 @@ public class OptionMenu extends JFrame implements ActionListener {
 						if (choice == JOptionPane.NO_OPTION) {
 							System.exit(0);
 						}
-					} catch (NullPointerException e) {
-						JOptionPane.showMessageDialog(null, "you didn't insert the data");
 					}
 				}
 			}
@@ -229,130 +217,149 @@ public class OptionMenu extends JFrame implements ActionListener {
 					String str = JOptionPane.showInputDialog("Please insert quantity: ");
 					try {
 						quantOfProduct = Integer.parseInt(str);
-						nameOfProduct = "Doll and  Bear Toybox";
+						nameOfProduct = "Grand Surprise ToyBox";
 						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
 						break;
 					} catch (NumberFormatException e) {
-						choice = JOptionPane.showOptionDialog(null, "Invalid Entry. Would You Like To Try Again",
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
 								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 						if (choice == JOptionPane.NO_OPTION) {
 							System.exit(0);
 						}
-					} catch (NullPointerException e) {
-						JOptionPane.showMessageDialog(null, "you didn't insert the data");
 					}
 				}
 			}
-
 		});
 		button7.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				continueLoop = true;
-				do {
+			public void actionPerformed(ActionEvent event) {
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
 					try {
-						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-						nameOfProduct = "Grand Surprise ToyBox";
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "HotWheels Car";
 						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
-					} catch (NumberFormatException ex) {
-						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
 					}
-					continueLoop = false;
-				} while (continueLoop);
+				}
 			}
-
 		});
 		button8.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				continueLoop = true;
-				do {
+			public void actionPerformed(ActionEvent event) {
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
 					try {
-						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-						nameOfProduct = "HotWheels Car";
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "Stuffed Duck Abie";
 						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
-					} catch (NumberFormatException ex) {
-						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
 					}
-					continueLoop = false;
-				} while (continueLoop);
+				}
 			}
 		});
 		button9.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				continueLoop = true;
-				do {
+			public void actionPerformed(ActionEvent event) {
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
 					try {
-						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-						nameOfProduct = "Stuffed Duck Abie";
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "Train Pollar Express";
 						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
-					} catch (NumberFormatException ex) {
-						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
 					}
-					continueLoop = false;
-				} while (continueLoop);
+				}
 			}
 		});
 		button10.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				continueLoop = true;
-				do {
+			public void actionPerformed(ActionEvent event) {
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
 					try {
-						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-						nameOfProduct = "Train Pollar Express";
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "Stuffed Zebra Martin";
 						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
-					} catch (NumberFormatException ex) {
-						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
 					}
-					continueLoop = false;
-				} while (continueLoop);
+				}
 			}
 		});
 		button11.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				continueLoop = true;
-				do {
+			public void actionPerformed(ActionEvent event) {
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
 					try {
-						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-						nameOfProduct = "Stuffed Zebra Martin";
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "Teddy Bear Molly";
 						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
-					} catch (NumberFormatException ex) {
-						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
 					}
-					continueLoop = false;
-				} while (continueLoop);
+				}
 			}
 		});
 		button12.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				continueLoop = true;
-				do {
+			public void actionPerformed(ActionEvent event) {
+				while (true) {
+					String str = JOptionPane.showInputDialog("Please insert quantity: ");
 					try {
-						quantOfProduct = Integer.parseInt(JOptionPane.showInputDialog("Please insert quantity"));
-						nameOfProduct = "Teddy Bear Molly";
+						quantOfProduct = Integer.parseInt(str);
+						nameOfProduct = "Colourfull Ball";
 						objectOfProductsClass.implementsCustomersPurchase(nameOfProduct, quantOfProduct);
-					} catch (NumberFormatException ex) {
-						JOptionPane.showInputDialog(null, "Please insert a valid quantity");
+						break;
+					} catch (NumberFormatException e) {
+						choice = JOptionPane.showOptionDialog(null, "Invalid on No Entry. Would You Like To Try Again",
+								"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+						if (choice == JOptionPane.NO_OPTION) {
+							System.exit(0);
+						}
 					}
-					continueLoop = false;
-				} while (continueLoop);
+				}
 			}
 		});
-
 		// add ActionListener for the new frame F2
 		item3.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent event) {
 				{
 					F2.setVisible(true);
 				}
@@ -363,106 +370,91 @@ public class OptionMenu extends JFrame implements ActionListener {
 
 	}
 
+	int result;
+
 	// Handles actions based in option
 	public void actionPerformed(ActionEvent event) throws NumberFormatException {
 		if (event.getSource() == item1) {
-			// ImageIcon icon = new ImageIcon("src/image/download.png");
-			do {
+			while (true) {
+				String str = JOptionPane.showInputDialog("Please insert the cost of goods sold : ");
 				try {
-					cost = Double.parseDouble(JOptionPane.showInputDialog("Please insert the cost: "));
+					cost = Integer.parseInt(str);
 					ProductFactory.setCostSold(cost);
+					break;
 				} catch (NumberFormatException e) {
-					JOptionPane.showInputDialog(null, "Sorry...invalid input was insert! Please try again.");
-				} catch (NullPointerException e) {
-					JOptionPane.showMessageDialog(null, "The cost sold is equal to zero...");
+					choice = JOptionPane.showOptionDialog(null, "Invalid or no Entry...Try Again!", "ERROR",
+							JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+					if (choice == JOptionPane.NO_OPTION) {
+						JOptionPane.showMessageDialog(null, "You have to set the cost first!! ");
+						break;
+					} else if (choice == JOptionPane.CLOSED_OPTION) {
+						result = JOptionPane.showConfirmDialog(null, "Exit?", "Confirm Exit",
+								JOptionPane.OK_CANCEL_OPTION);
+						if (result == JOptionPane.OK_OPTION) {
+							break;
+						}
+					}
 				}
-				continueLoop10 = false;
-			} while (continueLoop10);
+			}
 		} else if (event.getSource() == item2) {
-			do {
-				name = JOptionPane.showInputDialog("Please insert the name ");
-				if (name == " ") {
-					JOptionPane.showInputDialog("Please insert the name ");
+			JTextField fieldName = new JTextField();
+			JTextField fieldCode = new JTextField();
+			JTextField fieldQuantity = new JTextField();
+			JTextField fieldDay = new JTextField();
+			JTextField fieldMonth = new JTextField();
+			JTextField fieldYear = new JTextField();
+			JTextField fieldPrice = new JTextField();
+			Object[] message = { "Insert the name:", fieldName, "Insert the code:", fieldCode, "Insert the quantity:",
+					fieldQuantity, "Insert the day:", fieldDay, "Insert the month:", fieldMonth, "Insert the year:",
+					fieldYear, "Insert the price:", fieldPrice, };
+			int option = JOptionPane.showConfirmDialog(null, message, "Please enter all your values",
+					JOptionPane.OK_CANCEL_OPTION);
+			if (option == JOptionPane.OK_OPTION) {
+				if (ProductFactory.getAllProducts().containsKey(fieldName.getText())) {
+					choice = JOptionPane.showOptionDialog(null, "Are you sure you want to buy stock with these data?",
+							"Confirm stock's purchase", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+							null, null);
+					if (choice == JOptionPane.YES_OPTION) {
+						ProductFactory.purchaseOfStock(fieldName.getText(), fieldCode.getText(),
+								Integer.parseInt(fieldQuantity.getText()), Integer.parseInt(fieldDay.getText()),
+								Integer.parseInt(fieldMonth.getText()), Integer.parseInt(fieldYear.getText()),
+								Double.parseDouble(fieldPrice.getText()));
+						JOptionPane.showMessageDialog(null, "Stock bought successfully!!");
+					} else {
+
+					}
 				} else {
-					continueLoop11 = false;
+					JOptionPane.showMessageDialog(null, "Sorry, this product does not exist...");
 				}
-			} while (continueLoop11);
-			do {
-				try {
-					code = JOptionPane.showInputDialog("Please insert the code ");
-				} catch (NumberFormatException e) {
-					System.exit(0);
-				}
-				continueLoop12 = false;
-			} while (continueLoop12);
 
-			do {
+			} else if (event.getSource() == item4) {
+				while (true) {
+					mail = (JOptionPane.showInputDialog("Please insert your e-mail: "));
+					choice1 = JOptionPane.showOptionDialog(null, "Are you sure you want to continue?", "ERROR",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+					if (choice1 == JOptionPane.NO_OPTION) {
+						mail = (JOptionPane.showInputDialog("Please insert your e-mail: "));
+					} else {
+						break;
+					}
+				}
+				objectOfDatabaseconnectionClass.dbconnection();
 				try {
-					quantity = Integer.parseInt(JOptionPane.showInputDialog("Please insert the quantity "));
+					String path = (JOptionPane.showInputDialog("Please insert the path of the csv file: "));
 				} catch (NullPointerException e) {
 					System.exit(0);
-				} catch (NumberFormatException e) {
-					JOptionPane.showInputDialog(null, "Sorry...invalid quantity was insert! Please try again.");
 				}
-				continueLoop13 = false;
-			} while (continueLoop13);
 
-			do {
+				objectOfDatabaseconnectionClass.dbconnection();
+				objectOfNewPurchasesSeparationClass.separateCustomers();
+				objectOfCustomerClass.findsCustomersThatDeserveAnOffer();
+				objectOfGiftsClass = new Gifts();
 				try {
-					day = Integer.parseInt(JOptionPane.showInputDialog("Please insert the day "));
-				} catch (NullPointerException e) {
-					System.exit(0);
-				} catch (NumberFormatException e) {
-					JOptionPane.showInputDialog(null, "Sorry...invalid day was insert! Please try again.");
+					objectOfGiftsClass.findGiftsReceivers();
+				} catch (Exception e) {
+					System.err.print("Exception caught: " + e);
 				}
-				continueLoop14 = false;
-			} while (continueLoop14);
-
-			do {
-				try {
-					month = Integer.parseInt(JOptionPane.showInputDialog("Please insert the month "));
-				} catch (NullPointerException e) {
-					System.exit(0);
-				} catch (NumberFormatException e) {
-					JOptionPane.showInputDialog(null, "Sorry...invalid month insert! Please try again.");
-				}
-				continueLoop15 = false;
-			} while (continueLoop15);
-			do {
-				try {
-					year = Integer.parseInt(JOptionPane.showInputDialog("Please insert the year"));
-				} catch (NullPointerException e) {
-					System.exit(0);
-				} catch (NumberFormatException e) {
-					JOptionPane.showInputDialog(null, "Sorry...invalid year was insert! Please try again.");
-				}
-				continueLoop16 = false;
-			} while (continueLoop16);
-			do {
-				try {
-					price = Double.parseDouble(JOptionPane.showInputDialog("Please insert the price "));
-				} catch (NullPointerException e) {
-					System.exit(0);
-				} catch (NumberFormatException e) {
-					JOptionPane.showInputDialog(null, "Sorry...invalid price was insert! Please try again.");
-				}
-				continueLoop17 = false;
-			} while (continueLoop17);
-
-			ProductFactory.purchaseOfStock(name, code, quantity, day, month, year, price);
-			System.out.println(ProductFactory.getAllProducts());
-			JOptionPane.showMessageDialog(null, "Thank you!!");
-
-		} else if (event.getSource() == item4) {
-			objectOfDatabaseconnectionClass.dbconnection();
-			String path = (JOptionPane.showInputDialog("Please insert the path of the csv file: "));
-			objectOfCsvNewPurchasesClass.saveCsvData(path);
-			objectOfNewPurchasesSeparationClass.separateCustomers();
-			objectOfCustomerClass.findsCustomersThatDeserveAnOffer();
-			objectOfGiftsClass = new Gifts();
-			objectOfGiftsClass.findGiftsReceivers(objectOfCustomerClass.getNewoffered(),
-					objectOfProductsClass.createListofProductsPassedTheSellPeriod());
+			}
 		}
 	}
-
 }
