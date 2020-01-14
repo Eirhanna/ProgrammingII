@@ -13,12 +13,6 @@ This program has been created in order to maintain the most beneficial for the c
 ## Extra Tools
 * [Javadoc]()
 
-## How to install the application
-To create the .jar file:
-΄΄΄bash
-
-΄΄΄
-
 ## Authors 
 | Members |
 | --- |
