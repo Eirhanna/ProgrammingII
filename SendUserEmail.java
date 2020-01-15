@@ -72,7 +72,7 @@ public class SendUserEmail {
 				productsOfOffer);
 		Transport.send(message);
 
-		System.out.println("Message sent succesfully");
+		JOptionPane.showMessageDialog(null, "Message sent succesfully");
 	}
 
 	/**
