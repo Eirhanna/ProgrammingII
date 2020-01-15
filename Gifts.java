@@ -46,8 +46,8 @@ public class Gifts {
 		for (int i = 0; i < productsPassedTheSellPeriod.size(); i++) {
 			Product prod = productsPassedTheSellPeriod.get(i);
 			numberOfPoductsAsGifts = numberOfPoductsAsGifts + prod.getQuantity(); // variable that contains the total
-																					// number of products over the sell
-																					// period.
+												// number of products over the sell
+												// period.
 		}
 		return numberOfPoductsAsGifts;
 	}
