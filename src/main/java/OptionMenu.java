@@ -1,12 +1,8 @@
 import java.awt.*;
-import sun.audio.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
-
 import java.io.*;
-import java.util.InputMismatchException;
 
 /**
  * This class creates in GUI the main menu. First it creates a verification
