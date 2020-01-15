@@ -23,3 +23,10 @@ Ioanna Martini
 Maria Aspasia Stefadourou
 Vasiliki Chalkiopoulou
 Vassia Psoma
+
+## Useful information
+* 1972 lines of java code
+* 14 java classes
+* 
+* 
+* 
