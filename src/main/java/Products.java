@@ -57,7 +57,7 @@ public class Products {
     	 try {
     		 sum = productsOfInterest.stream().mapToInt(Product::getQuantity).sum(); // calculation of total amount of the product 
     	 } catch (NullPointerException e) {
-    		 System.err.println("Exception caught: " + e);
+    		 JOptionPane.showMessageDialog(null, "Sorry, no items of this product);
     		 
     	 }
     	 
