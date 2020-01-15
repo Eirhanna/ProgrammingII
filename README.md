@@ -3,7 +3,7 @@
 ![Logo](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/image/logo%20page2.png)
 
 ## Description of the project
-This program has been created in order to maintain the most beneficial for the company customers. It calculates the amount of products that have passed the period of sale and the clients that have eliminated a lot their purchases and they may pull away from our company.
+This program has been created in order to maintain the most beneficial for the company customers. It calculates the amount of products that have passed the period of sale and the clients that have eliminated a lot their purchases and they may pull away from our company. Then it offers them the aforementioned products in order to lure them back to the company. Practically our program attempts to turn two negative phanomenon into one positive situation for our company.
 
 ## Manual for the best utilisation and understandment of the program
 [Manual](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/src/main/DetGifthub%20User%20Manual.pdf)
