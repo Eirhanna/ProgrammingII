@@ -8,11 +8,14 @@ This program has been created in order to maintain the most beneficial for the c
 ## Manual for the best utilisation and understandment of the program
 [Manual](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/src/main/DetGifthub%20User%20Manual.pdf)
 
+## Basic structure of the master github repository
+It contains an src file which has a file with the JUnit tests() and a file called main. The main file contains the file Resaurses with the sql file and the csv file and the file java with the java classes.
+
 ## Tools you need in order to successfully run the application
 * [Maven]()
 * [Sql](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/SQLQueryforProgrammingII.sql)
 
-## Authors 
+## Contributors
 | Members |
 | --- |
 Eirianna Papoutsi(Team Captain)
