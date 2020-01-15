@@ -6,7 +6,7 @@
 This program has been created in order to maintain the most beneficial for the company customers. It calculates the amount of products that have passed the period of sale and the clients that have eliminated a lot their purchases and they may pull away from our company.
 
 ## Manual for the best utilisation and understandment of the program
-
+[Manual](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/src/main/DetGifthub%20User%20Manual.pdf)
 
 ## Tools you need in order to successfully run the application
 * [Maven]()
