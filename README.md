@@ -10,8 +10,9 @@ This program has been created in order to maintain the most beneficial for the c
 
 ## Basic structure of the master github repository
 * images(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/image)
+
 * src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src)
- * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
+   * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
   * java classes(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/java)
   * Resaurses(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/resources)
   * Manual(https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/src/main/DetGifthub%20User%20Manual.pdf)
