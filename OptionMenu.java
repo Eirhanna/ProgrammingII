@@ -43,6 +43,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 	CsvNewPurchases objectOfCsvNewPurchasesClass = new CsvNewPurchases();
 	Customer objectOfCustomerClass = new Customer();
 	Gifts objectOfGiftsClass;
+	SendUserEmail objectOfSendUserEmailClass = new SendUserEmail();
 	UIManager UI = new UIManager();
 	boolean continueLoop = true;
 	/**
@@ -62,21 +63,12 @@ public class OptionMenu extends JFrame implements ActionListener {
 	 * Constructor
 	 */
 	public OptionMenu() {
-		/**
-		 * Set backround color for all JOptionPanes
-		 */
 		UI.put("OptionPane.background", new ColorUIResource(253, 255, 108));
 		UI.put("Panel.background", new ColorUIResource(253, 255, 108));
-	
-		/**
-		 * Create the main menu 
-		 */
+// create the main menu
 		JFrame F = new JFrame("Main Menu");
 		JMenuBar menubar = new JMenuBar();
-		
-		/**
-		 * Create the main options
-		 */
+
 		JMenu menu1 = new JMenu("Select option!");
 		menubar.add(menu1);
 		menubar.setPreferredSize(new Dimension(150, 30));
@@ -92,25 +84,19 @@ public class OptionMenu extends JFrame implements ActionListener {
 		menu1.setOpaque(true);
 		menu1.setBackground(new java.awt.Color(253, 255, 108));
 
-		/**
-		 * Add ActionListeners to the main options
-		 */
+// add action listener
 		item1.addActionListener(this);
 		item2.addActionListener(this);
 		item3.addActionListener(this);
 		item4.addActionListener(this);
 
-		/**
-		 * Add items to the menu
-		 */
+// add items to menu
 		menu1.add(item1);
 		menu1.add(item2);
 		menu1.add(item3);
 		menu1.add(item4);
 
-		/**
-		 * Format the F JFrame
-		 */
+// set size,location
 		F.setJMenuBar(menubar);
 		F.pack();
 		F.setLocationRelativeTo(null);
@@ -123,13 +109,13 @@ public class OptionMenu extends JFrame implements ActionListener {
 		F.pack();
 		F.setLocationRelativeTo(null);
 
-		/**
-		 * Create and Format the Password Frame 
-		 */
+// create the password frame
 		JFrame passFrame = new JFrame("Welcome to Det Gifthub");
+
 		passFrame.setSize(500, 270);
 		passFrame.setDefaultCloseOperation(passFrame.EXIT_ON_CLOSE);
 		passFrame.setLocationRelativeTo(null);
+
 		JLabel Label = new JLabel();
 		JLabel textlabel = new JLabel("Enter the password", SwingConstants.CENTER);
 		textlabel.setFont(new Font("SansSerif Bold", Font.PLAIN, 30));
@@ -143,14 +129,11 @@ public class OptionMenu extends JFrame implements ActionListener {
 		Panel.add(textlabel);
 		Panel.setBackground(new java.awt.Color(133, 255, 155));
 		passFrame.add(Panel);
+
 		JPasswordField pass = new JPasswordField(10);
 		pass.setEchoChar('*');
 		pass.setBounds(100, 100, 10, 10);
 		passFrame.setVisible(true);
-		
-		/**
-		 * Add ActionListener to @pass 
-		 */
 		pass.addActionListener(new ActionListener() {
 
 			@Override
@@ -172,19 +155,14 @@ public class OptionMenu extends JFrame implements ActionListener {
 		Panel.add(Label);
 		Panel.add(pass);
 
-		/**
-		 * Create the JFrame F2 which will appear when the user clicks the third option 
-		 * in the main menu 
-		 */
+// create the submenu of customer's purchase option
 		JFrame F2 = new JFrame("Click a product");
 		F2.setLocationRelativeTo(null);
 		F2.setSize(600, 400);
 		JPanel panel2 = new JPanel();
 		F2.add(panel2);
 
-		/**
-		 * Create and add the buttons to F2
-		 */
+// create and add the buttons
 		ImageIcon Product1 = new ImageIcon(this.getClass().getResource("/toybox1.png"));
 		ImageIcon Product2 = new ImageIcon(this.getClass().getResource("/ball.png"));
 		ImageIcon Product3 = new ImageIcon(this.getClass().getResource("/toybox2.png"));
@@ -222,9 +200,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 		panel2.add(button12);
 		button5.setBounds(250, 250, 120, 35);
 
-		/**
-		 * Add ActionListers to the product buttons 
-		 */
+// add ActionListeners to the buttons
 		button5.addActionListener(new ActionListener() {
 
 			@Override
@@ -393,10 +369,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 				}
 			}
 		});
-		/**
-		 * Add ActionListener for option 3 in the main menu so that the 
-		 * F2 appears when you click 
-		 */
+// add ActionListener for the new frame F2
 		item3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
@@ -405,15 +378,14 @@ public class OptionMenu extends JFrame implements ActionListener {
 				}
 			}
 		});
+
+// add ActionListeners to the buttons
+
 	}
-	
-	/**
-	 * Refers to JOptionPane result
-	 */
+
 	int result;
-	/**
-	 * Handles Actions based in option 1,2 and 4
-	 */
+
+// Handles actions based in option
 	public void actionPerformed(ActionEvent event) throws NumberFormatException {
 		if (event.getSource() == item1) {
 			while (true) {
@@ -461,38 +433,34 @@ public class OptionMenu extends JFrame implements ActionListener {
 								Integer.parseInt(fieldMonth.getText()), Integer.parseInt(fieldYear.getText()),
 								Double.parseDouble(fieldPrice.getText()));
 						JOptionPane.showMessageDialog(null, "Stock bought successfully!!");
-					} else { }
+					} else {
+					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Sorry, this product does not exist...");
 				}
-			} 
+			}
 		} else if (event.getSource() == item4) {
-				while (true) {
+			while (true) {
+				mail = (JOptionPane.showInputDialog("Please insert your e-mail: "));
+				choice1 = JOptionPane.showOptionDialog(null, "Are you sure you want to continue with this e-mail?",
+						"ERROR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+				if (choice1 == JOptionPane.NO_OPTION) {
 					mail = (JOptionPane.showInputDialog("Please insert your e-mail: "));
-					choice1 = JOptionPane.showOptionDialog(null, "Are you sure you want to continue with this e-mail?", "ERROR",
-							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-					if (choice1 == JOptionPane.NO_OPTION) {
-						mail = (JOptionPane.showInputDialog("Please insert your e-mail: "));
-					} else {
-						break;
-					}
+				} else {
+					break;
 				}
-				objectOfDatabaseconnectionClass.dbconnection();
-				try {
-					String path = (JOptionPane.showInputDialog("Please insert the path of the csv file: "));
-				} catch (NullPointerException e) {
-					System.exit(0);
-				}
+			}
+			objectOfNewPurchasesSeparationClass.separateCustomers();
+			objectOfCustomerClass.findsCustomersThatDeserveAnOffer();
+			objectOfGiftsClass = new Gifts();
+			try {
+				objectOfGiftsClass.findGiftsReceivers();
+				objectOfSendUserEmailClass.sendUserMail(mail, Gifts.mailsOfCustomersForGifts,
+						Gifts.namesOfCustomersForGifts, Gifts.namesOfProductsAsGifts);
+			} catch (Exception e) {
+				System.err.print("Exception caught: " + e);
+			}
 
-				objectOfDatabaseconnectionClass.dbconnection();
-				objectOfNewPurchasesSeparationClass.separateCustomers();
-				objectOfCustomerClass.findsCustomersThatDeserveAnOffer();
-				objectOfGiftsClass = new Gifts();
-				try {
-					objectOfGiftsClass.findGiftsReceivers();
-				} catch (Exception e) {
-					System.err.print("Exception caught: " + e);
-				}		
-		 }
+		}
 	}
 }
