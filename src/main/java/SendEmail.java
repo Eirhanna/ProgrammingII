@@ -1,9 +1,3 @@
-/*
- * SendEmail class
- */
-
-package com.progII.gifthub;
-
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
