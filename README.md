@@ -37,7 +37,7 @@ Vasiliki Chalkiopoulou
 Vassia Psoma
 
 ## Useful information
-* 1972 lines of java code
+* 2275 lines of java code
 * 14 java classes
 * 11 images
 * 6 JUnit Tests classes
