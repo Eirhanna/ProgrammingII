@@ -20,7 +20,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 	private JMenuItem item3 = new JMenuItem("3.Add customer's purchase");
 	private JMenuItem item4 = new JMenuItem("4.Make an offer");
 	/** Represents the correct password of our user */
-	private static String password = "pass";
+	private static String password = "D";
 	/**
 	 * Represents the quantity of the product that the user will select when he
 	 * clicks in option 3
@@ -62,12 +62,12 @@ public class OptionMenu extends JFrame implements ActionListener {
 	 * Constructor
 	 */
 	public OptionMenu() {
-		
 		/**
 		 * Set backround color for all JOptionPanes
 		 */
 		UI.put("OptionPane.background", new ColorUIResource(253, 255, 108));
 		UI.put("Panel.background", new ColorUIResource(253, 255, 108));
+		
 		
 		/**
 		 * Create the main menu 
@@ -80,12 +80,16 @@ public class OptionMenu extends JFrame implements ActionListener {
 		 */
 		JMenu menu1 = new JMenu("Select option!");
 		menubar.add(menu1);
-		menubar.setPreferredSize(new Dimension(100, 40));
-		menu1.setFont(new Font("sans-serif", Font.PLAIN, 20));
+		menubar.setPreferredSize(new Dimension(150, 30));
+		menu1.setFont(new Font("sans-serif", Font.PLAIN, 16));
 		item1.setFont(new Font("sans-serif", Font.PLAIN, 16));
 		item2.setFont(new Font("sans-serif", Font.PLAIN, 16));
 		item3.setFont(new Font("sans-serif", Font.PLAIN, 16));
-		item4.setFont(new Font("sans-serif", Font.PLAIN, 17));
+		item4.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		item1.setBackground(new java.awt.Color(253, 255, 108));
+		item2.setBackground(new java.awt.Color(253, 255, 108));
+		item3.setBackground(new java.awt.Color(253, 255, 108));
+		item4.setBackground(new java.awt.Color(253, 255, 108));
 		menu1.setOpaque(true);
 		menu1.setBackground(new java.awt.Color(253, 255, 108));
 
@@ -111,11 +115,11 @@ public class OptionMenu extends JFrame implements ActionListener {
 		F.setJMenuBar(menubar);
 		F.pack();
 		F.setLocationRelativeTo(null);
-		F.setSize(820, 600);
+		F.setSize(200, 300);
 		JLabel label = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/logo page.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/logo page2.png")).getImage();
 		label.setIcon(new ImageIcon(img));
-		label.setBounds(450, 300, 13, 35);
+		label.setBounds(300, 200, 13, 35);
 		F.getContentPane().add(label);
 		F.pack();
 		F.setLocationRelativeTo(null);
@@ -131,7 +135,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 
 		JLabel Label = new JLabel();
 		JLabel textlabel = new JLabel("Enter the password", SwingConstants.CENTER);
-		textlabel.setFont(new Font("SansSerif Bold", Font.PLAIN, 20));
+		textlabel.setFont(new Font("SansSerif Bold", Font.PLAIN, 30));
 		passFrame.setResizable(false);
 		JPanel Panel = new JPanel();
 		Image passimg = new ImageIcon(this.getClass().getResource("/password.png")).getImage();
@@ -145,7 +149,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 
 		JPasswordField pass = new JPasswordField(10);
 		pass.setEchoChar('*');
-		pass.setBounds(200, 200, 50, 20);
+		pass.setBounds(100, 100, 10, 10);
 		passFrame.setVisible(true);
 		
 		/**
@@ -178,7 +182,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 		 */
 		JFrame F2 = new JFrame("Click a product");
 		F2.setLocationRelativeTo(null);
-		F2.setSize(500, 370);
+		F2.setSize(600, 400);
 		JPanel panel2 = new JPanel();
 		F2.add(panel2);
 
@@ -201,6 +205,14 @@ public class OptionMenu extends JFrame implements ActionListener {
 		JButton button10 = new JButton("Train Pollar Express", Product6);
 		JButton button11 = new JButton("Stuffed Zebra Martin", Product7);
 		JButton button12 = new JButton("Teddy Bear Molly", Product8);
+		button5.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		button6.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		button7.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		button8.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		button9.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		button10.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		button11.setFont(new Font("sans-serif", Font.PLAIN, 16));
+		button12.setFont(new Font("sans-serif", Font.PLAIN, 16));
 		setLayout(new FlowLayout());
 		add(button5);
 		add(button6);
@@ -214,6 +226,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 		panel2.add(button12);
 		button5.setBounds(250, 250, 120, 35);
 
+		
 		/**
 		 * Add ActionListers to the product buttons 
 		 */
@@ -451,17 +464,15 @@ public class OptionMenu extends JFrame implements ActionListener {
 								Integer.parseInt(fieldMonth.getText()), Integer.parseInt(fieldYear.getText()),
 								Double.parseDouble(fieldPrice.getText()));
 						JOptionPane.showMessageDialog(null, "Stock bought successfully!!");
-					} else {
-
-					}
+					} else { }
 				} else {
 					JOptionPane.showMessageDialog(null, "Sorry, this product does not exist...");
 				}
-
-			} else if (event.getSource() == item4) {
+			} 
+		} else if (event.getSource() == item4) {
 				while (true) {
 					mail = (JOptionPane.showInputDialog("Please insert your e-mail: "));
-					choice1 = JOptionPane.showOptionDialog(null, "Are you sure you want to continue?", "ERROR",
+					choice1 = JOptionPane.showOptionDialog(null, "Are you sure you want to continue with this e-mail?", "ERROR",
 							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 					if (choice1 == JOptionPane.NO_OPTION) {
 						mail = (JOptionPane.showInputDialog("Please insert your e-mail: "));
@@ -484,8 +495,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 					objectOfGiftsClass.findGiftsReceivers();
 				} catch (Exception e) {
 					System.err.print("Exception caught: " + e);
-				}
-			}
-		}
+				}		
+	 }
 	}
 }
