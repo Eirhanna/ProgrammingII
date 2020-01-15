@@ -1,5 +1,3 @@
-package com.progII.gifthub;
-
 import static org.junit.Assert.*;
 
 import org.junit.Test;
