@@ -1,5 +1,3 @@
-package javaProg2;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -7,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Products {
@@ -58,14 +57,16 @@ public class Products {
     	 try {
     		 sum = productsOfInterest.stream().mapToInt(Product::getQuantity).sum(); // calculation of total amount of the product 
     	 } catch (NullPointerException e) {
-    		 System.err.println("Exception caught: " + e);
+    		 JOptionPane.showMessageDialog(null, "Sorry, no items of this product);
     		 
     	 }
     	 
     	 // Return a message in case the demand quantity is more than the stock.
     	 if (quantity > sum) {
-    		 System.out.println("Sorry! :( We do not have so many items of this product.");
+    		 JOptionPane.showMessageDialog(null, "Sorry! :( We do not have so many items of this product.");
     		 return;
+    	 } else {
+    		 JOptionPane.showMessageDialog(null, "Stock reduced successfully!");
     	 }
     	 
     	 // Calls a method to sort the list in decreasing order

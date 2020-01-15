@@ -20,26 +20,24 @@ import javax.mail.internet.InternetAddress;
  * SendEmail is responsible to send emails to the customer that are entitled to
  * an offer
  * 
- * SendEmail gets an InfoMail object containing three string arrays, of
- * recipients' mails and names and the products the company has decided to
- * offer. It contacts the gmail server, logs into the gmail account of the
- * company and then prepares and sends a personalized message to each client
+ * SendEmail gets three string arrays, one of recipients' mails, one of their
+ * names and one of the products the company has decided to offer. It contacts
+ * the gmail server, logs into the gmail account of the company and then
+ * prepares and sends a personalized message to each client
  * 
  * @author Katerina Dimatou
  * 
- * @param object of the InfoMail class containing the three string arrays of
- *               email accounts, names, products for the offer
+ * @param array of recepients' mails
+ * @param array of recepients' names
+ * @param array of products that will be given out
+ * 
  * @return Nothing
  * @throws Exception
  *
  */
 public class SendEmail {
 
-	public void sendMail(InfoMail object) throws Exception {
-
-		String[] recepients = object.getMailsOfCustomersForGifts();
-		String[] names = object.getNamesOfCustomersForGifts();
-		String[] productsToOffer = object.getNamesOfProductsAsGifts();
+	public void sendMail(String[] recepients, String[] names, String[] productsToOffer) throws Exception {
 
 		System.out.println("Ready to send email");
 		Properties properties = new Properties();
@@ -71,7 +69,7 @@ public class SendEmail {
 			Transport.send(message);
 		}
 
-		System.out.println("Message sent succesfully");
+		JOptionPane.showMessageDialog(null, "Message sent succesfully");
 	}
 
 	/**

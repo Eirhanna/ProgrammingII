@@ -23,8 +23,8 @@ public class ProductsTest {
 	public void testFindDays() {
 		
 		// Given
-		int day = 15, month = 12, year = 2019;
-		long expected = 6;
+		int day = 1, month = 1, year = 2020;
+		long expected = 14;
 
 		//When
 	    LocalDate now = LocalDate.now();

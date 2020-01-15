@@ -24,7 +24,7 @@ CREATE TABLE Java_Offered
 INSERT INTO Java_Customers VALUES('Ioanna Martini','ioannamartini@yahoo.gr');
 INSERT INTO Java_Customers VALUES('Niki Boura','nikiboura@gmail.com');
 INSERT INTO Java_Customers VALUES('Antonis Kuriakou','AntonisK@hotmail.com');
-INSERT INTO Java_Customers VALUES('Melina Papakosta','MelinaPap@hotmail.com');
+INSERT INTO Java_Customers VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr');
 INSERT INTO Java_Customers VALUES('Georgios Papadopoulos','GeorgeP@gmail.com');
 
 INSERT INTO Java_Agores VALUES('Ioanna Martini','ioannamartini@yahoo.gr',1,850.5);
@@ -40,16 +40,16 @@ INSERT INTO Java_Agores VALUES('Ioanna Martini','ioannamartini@yahoo.gr',10,861.
 INSERT INTO Java_Agores VALUES('Ioanna Martini','ioannamartini@yahoo.gr',11,860);
 INSERT INTO Java_Agores VALUES('Ioanna Martini','ioannamartini@yahoo.gr',12,883.6);
 
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',2,520.5);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',3,489.65);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',4,568.9);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',5,477.7);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',6,536);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',7,601.5);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',9,596);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',2,320.5);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',3,289.65);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',4,368.9);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',5,277.7);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',6,336);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',7,301.5);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',9,296);
 INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',10,458.2);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',11,597.3);
-INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',12,405.8);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',11,397.3);
+INSERT INTO Java_Agores VALUES('Antonis Kuriakou','AntonisK@hotmail.com',12,4305.8);
 
 INSERT INTO Java_Agores VALUES('Niki Boura','nikiboura@gmail.com',1,802.5);
 INSERT INTO Java_Agores VALUES('Niki Boura','nikiboura@gmail.com',2,798);
@@ -64,16 +64,16 @@ INSERT INTO Java_Agores VALUES('Niki Boura','nikiboura@gmail.com',10,648);
 INSERT INTO Java_Agores VALUES('Niki Boura','nikiboura@gmail.com',11,862.5);
 INSERT INTO Java_Agores VALUES('Niki Boura','nikiboura@gmail.com',12,725.1);
 
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',1,305.5);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',2,365);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',3,590.3);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',5,458.2);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',6,354.2);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',8,411.48);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',9,395.5);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',10,451);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',11,388.8);
-INSERT INTO Java_Agores VALUES('Melina Papakosta','MelinaPap@hotmail.com',12,305.9);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',1,405.5);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',2,465);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',3,590.3);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',5,458.2);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',6,554.2);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',8,411.48);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',9,495.5);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',10,451);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',11,588.8);
+INSERT INTO Java_Agores VALUES('Irianna Papoutsi','irianna_pap@hotmail.gr',12,305.9);
 
 INSERT INTO Java_Agores VALUES('Georgios Papadopoulos','GeorgeP@gmail.com',1,321);
 INSERT INTO Java_Agores VALUES('Georgios Papadopoulos','GeorgeP@gmail.com',2,289.2);
@@ -86,3 +86,10 @@ INSERT INTO Java_Agores VALUES('Georgios Papadopoulos','GeorgeP@gmail.com',9,269
 INSERT INTO Java_Agores VALUES('Georgios Papadopoulos','GeorgeP@gmail.com',10,328.2);
 INSERT INTO Java_Agores VALUES('Georgios Papadopoulos','GeorgeP@gmail.com',11,365.45);
 INSERT INTO Java_Agores VALUES('Georgios Papadopoulos','GeorgeP@gmail.com',12,297.67);
+
+SELECT  min(Fees) as minf, sum(Fees) as sumf, a.Mail, a.Name
+FROM Java_Agores as a, Java_Customers as b
+WHERE a.Name = b.Name AND a.Mail = b.Mail
+GROUP BY a.Name,a.Mail
+
+SELECT*FROM Java_Offered
