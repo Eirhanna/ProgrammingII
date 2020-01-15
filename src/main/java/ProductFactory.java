@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.swing.JOptionPane;
+
 /**
  * This class refers to the stock of the company.
  * It creates a map that includes the stock and finds the sell period of it.
@@ -32,9 +32,9 @@ public class ProductFactory {
 		 * If not, it creates a new list which includes the fields of the stock 
 		 * and then adds it to the map in a form of a new item.
 		 */
-		if(allProducts.containsKey(newProduct.getName())) {
+		if (allProducts.containsKey(newProduct.getName())) {
 			allProducts.get(newProduct.getName()).add(newProduct);
-		}else {
+		} else {
 			List<Product> value = new ArrayList<Product>();
 			value.add(newProduct);
 			allProducts.put(newProduct.getName(), value);
@@ -52,10 +52,10 @@ public class ProductFactory {
 	 * If at least one of them is zero the sell period cannot be calculated and it will be set as zero as well.
 	 */
 	public static double findSellPeriod(int quantity, double costSold) {
-		if(quantity != 0 && costSold != 0) {
+		if (quantity != 0 && costSold != 0) {
 			double ratio = costSold / quantity; // Calculation of Stock Turnover Ratio based on accounting types
 			return 360 / ratio; // Calculation of stock sale period based on accounting types
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(null, "Sell period cannot be calculated. Setting it to 0...");
 			return 0;
 		}
