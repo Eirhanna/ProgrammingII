@@ -62,12 +62,22 @@ public class OptionMenu extends JFrame implements ActionListener {
 	 * Constructor
 	 */
 	public OptionMenu() {
+		
+		/**
+		 * Set backround color for all JOptionPanes
+		 */
 		UI.put("OptionPane.background", new ColorUIResource(253, 255, 108));
 		UI.put("Panel.background", new ColorUIResource(253, 255, 108));
-		// create the main menu
+		
+		/**
+		 * Create the main menu 
+		 */
 		JFrame F = new JFrame("Main Menu");
 		JMenuBar menubar = new JMenuBar();
-
+		
+		/**
+		 * Create the main options
+		 */
 		JMenu menu1 = new JMenu("Select option!");
 		menubar.add(menu1);
 		menubar.setPreferredSize(new Dimension(100, 40));
@@ -79,19 +89,25 @@ public class OptionMenu extends JFrame implements ActionListener {
 		menu1.setOpaque(true);
 		menu1.setBackground(new java.awt.Color(253, 255, 108));
 
-		// add action listener
+		/**
+		 * Add ActionListeners to the main options
+		 */
 		item1.addActionListener(this);
 		item2.addActionListener(this);
 		item3.addActionListener(this);
 		item4.addActionListener(this);
 
-		// add items to menu
+		/**
+		 * Add items to the menu
+		 */
 		menu1.add(item1);
 		menu1.add(item2);
 		menu1.add(item3);
 		menu1.add(item4);
 
-		// set size,location
+		/**
+		 * Format the F JFrame
+		 */
 		F.setJMenuBar(menubar);
 		F.pack();
 		F.setLocationRelativeTo(null);
@@ -104,7 +120,9 @@ public class OptionMenu extends JFrame implements ActionListener {
 		F.pack();
 		F.setLocationRelativeTo(null);
 
-		// create the password frame
+		/**
+		 * Create and Format the Password Frame 
+		 */
 		JFrame passFrame = new JFrame("Welcome to Det Gifthub");
 
 		passFrame.setSize(500, 270);
@@ -129,6 +147,10 @@ public class OptionMenu extends JFrame implements ActionListener {
 		pass.setEchoChar('*');
 		pass.setBounds(200, 200, 50, 20);
 		passFrame.setVisible(true);
+		
+		/**
+		 * Add ActionListener to @pass 
+		 */
 		pass.addActionListener(new ActionListener() {
 
 			@Override
@@ -150,14 +172,19 @@ public class OptionMenu extends JFrame implements ActionListener {
 		Panel.add(Label);
 		Panel.add(pass);
 
-		// create the submenu of customer's purchase option
+		/**
+		 * Create the JFrame F2 which will appear when the user clicks the third option 
+		 * in the main menu 
+		 */
 		JFrame F2 = new JFrame("Click a product");
 		F2.setLocationRelativeTo(null);
 		F2.setSize(500, 370);
 		JPanel panel2 = new JPanel();
 		F2.add(panel2);
 
-		// create and add the buttons
+		/**
+		 * Create and add the buttons to F2
+		 */
 		ImageIcon Product1 = new ImageIcon(this.getClass().getResource("/toybox1.png"));
 		ImageIcon Product2 = new ImageIcon(this.getClass().getResource("/ball.png"));
 		ImageIcon Product3 = new ImageIcon(this.getClass().getResource("/toybox2.png"));
@@ -187,7 +214,9 @@ public class OptionMenu extends JFrame implements ActionListener {
 		panel2.add(button12);
 		button5.setBounds(250, 250, 120, 35);
 
-		// add ActionListeners to the buttons
+		/**
+		 * Add ActionListers to the product buttons 
+		 */
 		button5.addActionListener(new ActionListener() {
 
 			@Override
@@ -356,7 +385,10 @@ public class OptionMenu extends JFrame implements ActionListener {
 				}
 			}
 		});
-		// add ActionListener for the new frame F2
+		/**
+		 * Add ActionListener for option 3 in the main menu so that the 
+		 * F2 appears when you click 
+		 */
 		item3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
@@ -365,14 +397,13 @@ public class OptionMenu extends JFrame implements ActionListener {
 				}
 			}
 		});
-
-		// add ActionListeners to the buttons
-
 	}
 
 	int result;
 
-	// Handles actions based in option
+	/**
+	 * Handles Actions based in option 1,2 and 4
+	 */
 	public void actionPerformed(ActionEvent event) throws NumberFormatException {
 		if (event.getSource() == item1) {
 			while (true) {
