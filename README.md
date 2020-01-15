@@ -9,7 +9,7 @@ This program has been created in order to maintain the most beneficial for the c
 [Manual](https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/src/main/DetGifthub%20User%20Manual.pdf)
 
 ## Basic structure of the master github repository
-It contains an src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src) which has a file with the JUnit tests() and a file called main. The main file contains the file Resaurses with the sql file and the csv file and the file java with the java classes.
+It contains an src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src) which has a file with the JUnit tests(), a file called main and a file with the images(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/image). The main file contains the file Resaurses with the sql file and the csv file and the file java with the java classes.
 
 ## Tools you need in order to successfully run the application
 * [Maven]()
