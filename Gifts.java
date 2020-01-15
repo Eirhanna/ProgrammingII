@@ -33,6 +33,7 @@ public class Gifts {
 	EmailThreads objectOfEmailThreadsClass = new EmailThreads(); // create an object of the class EmailThreads
 	static int sizeOfnewoffered = Customer.newoffered.size();
 	OptionMenu objectOfOptionmenu = new OptionMenu(); 
+	SendUserEmail objectOfSendUserEmailClass = new SendUserEmail(); // create an object of the class SendUserEmail
 	
 	/**
 	 * find how many products have surpassed their sell period and can be given as
@@ -139,7 +140,6 @@ public class Gifts {
 		// checks if there are any products over the sell period to offer as gifts
 		sortMyListBasedOnThePrice(productsPassedTheSellPeriod);
 		sortMyListBasedOnTheTotalFees(Customer.newoffered);
-		SendUserEmail objectOfSendUserEmailClass = new SendUserEmail();
 		if (productsPassedTheSellPeriod.size() != 0 && sizeOfnewoffered != 0) {
 			numberOfGifts = askNumberOfGifts();
 			if (numberOfGifts != 0) {
