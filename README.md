@@ -17,6 +17,7 @@ This program has been created in order to maintain the most beneficial for the c
 * sql
 * csv file
 * java classes
+* README.md(https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/README.md)
 
 ## Tools you need in order to successfully run the application
 * [Maven]()
