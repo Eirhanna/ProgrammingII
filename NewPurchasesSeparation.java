@@ -1,7 +1,7 @@
-package javaProg2;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 /**
  * Separation of the customers. This class checks if the purchases from the csv
@@ -17,7 +17,7 @@ public class NewPurchasesSeparation extends CsvNewPurchases {
 	/** Creation of a list with the new fees of the customers */
 	static ArrayList<NewPurchasesSeparation> OldCustomers;
 	Databaseconnection objectOfDatabaseconnectionClass;
-	CsvNewPurchases objectOfCsvNewPurchases;
+	static CsvNewPurchases objectOfCsvNewPurchasesClass;
 	// The data that we need
 	static NewPurchasesSeparation newF;
 	private String newName;
@@ -26,6 +26,7 @@ public class NewPurchasesSeparation extends CsvNewPurchases {
 	private Double newfees;
 	private String newMail;
 	private double nf = 0;
+	String path;
 
 	private String offeredName;
 
@@ -37,22 +38,24 @@ public class NewPurchasesSeparation extends CsvNewPurchases {
 
 		OldCustomers = new ArrayList<NewPurchasesSeparation>();
 		objectOfDatabaseconnectionClass = new Databaseconnection();
-		objectOfCsvNewPurchases = new CsvNewPurchases();
+		objectOfCsvNewPurchasesClass = new CsvNewPurchases();
 
 		objectOfDatabaseconnectionClass.dbconnection();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("insert path");
-		String path = sc.nextLine();
-		objectOfCsvNewPurchases.saveCsvData(path);
+		try {
+			path = (JOptionPane.showInputDialog("Please insert the path of the csv file: "));
+		} catch (NullPointerException e) {
+			System.exit(0);
+		}
+		objectOfCsvNewPurchasesClass.saveCsvData(path);
 
 		/*
 		 * Checks if the customer already exists if yes, adds his new fees to a new list
 		 * if not, adds the new customer to another list
 		 */
-		for (int i = 0; i < objectOfCsvNewPurchases.getName().size(); i++) {
+		for (int i = 0; i < CsvNewPurchases.name.size(); i++) {
 			boolean found = false;
 			int j = 0;
-			String nameCsv = objectOfCsvNewPurchases.getName().get(i);
+			String nameCsv = CsvNewPurchases.name.get(i);
 			do {
 				if (nameCsv.equals(Databaseconnection.totalFees.get(j).getName())) {
 					found = true;
@@ -93,11 +96,11 @@ public class NewPurchasesSeparation extends CsvNewPurchases {
 
 	/** Creation of getters and setters */
 
-	public static ArrayList<NewPurchasesSeparation> getOldCustomers() {
+	public ArrayList<NewPurchasesSeparation> getOldCustomers() {
 		return OldCustomers;
 	}
 
-	public static void setNewFees(ArrayList<NewPurchasesSeparation> newFees) {
+	public void setNewFees(ArrayList<NewPurchasesSeparation> newFees) {
 		OldCustomers = newFees;
 	}
 
@@ -198,11 +201,4 @@ public class NewPurchasesSeparation extends CsvNewPurchases {
 		this.newMail = newMail;
 		this.newFees = newFees;
 	}
-
-	// Constructor
-	public NewPurchasesSeparation(String newName, String newMail) {
-		this.newName = newName;
-		this.newMail = newMail;
-	}
-
 }
