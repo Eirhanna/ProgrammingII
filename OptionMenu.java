@@ -67,8 +67,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 		 */
 		UI.put("OptionPane.background", new ColorUIResource(253, 255, 108));
 		UI.put("Panel.background", new ColorUIResource(253, 255, 108));
-		
-		
+	
 		/**
 		 * Create the main menu 
 		 */
@@ -128,11 +127,9 @@ public class OptionMenu extends JFrame implements ActionListener {
 		 * Create and Format the Password Frame 
 		 */
 		JFrame passFrame = new JFrame("Welcome to Det Gifthub");
-
 		passFrame.setSize(500, 270);
 		passFrame.setDefaultCloseOperation(passFrame.EXIT_ON_CLOSE);
 		passFrame.setLocationRelativeTo(null);
-
 		JLabel Label = new JLabel();
 		JLabel textlabel = new JLabel("Enter the password", SwingConstants.CENTER);
 		textlabel.setFont(new Font("SansSerif Bold", Font.PLAIN, 30));
@@ -146,7 +143,6 @@ public class OptionMenu extends JFrame implements ActionListener {
 		Panel.add(textlabel);
 		Panel.setBackground(new java.awt.Color(133, 255, 155));
 		passFrame.add(Panel);
-
 		JPasswordField pass = new JPasswordField(10);
 		pass.setEchoChar('*');
 		pass.setBounds(100, 100, 10, 10);
@@ -226,7 +222,6 @@ public class OptionMenu extends JFrame implements ActionListener {
 		panel2.add(button12);
 		button5.setBounds(250, 250, 120, 35);
 
-		
 		/**
 		 * Add ActionListers to the product buttons 
 		 */
@@ -411,9 +406,11 @@ public class OptionMenu extends JFrame implements ActionListener {
 			}
 		});
 	}
-
+	
+	/**
+	 * Refers to JOptionPane result
+	 */
 	int result;
-
 	/**
 	 * Handles Actions based in option 1,2 and 4
 	 */
@@ -496,6 +493,6 @@ public class OptionMenu extends JFrame implements ActionListener {
 				} catch (Exception e) {
 					System.err.print("Exception caught: " + e);
 				}		
-	 }
+		 }
 	}
 }
