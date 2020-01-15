@@ -10,8 +10,8 @@ This program has been created in order to maintain the most beneficial for the c
 
 ## Basic structure of the master github repository
 * src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src)
+  * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
 * JUnit tests()
-* main()
 * images(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/image)
 * Resaurses
 * sql
