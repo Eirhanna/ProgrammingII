@@ -28,5 +28,4 @@ Vassia Psoma
 * 1972 lines of java code
 * 14 java classes
 * 11 photos
-* 6 java tests
-* 
+* 6 JUnit tests
