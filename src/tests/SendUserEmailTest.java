@@ -11,10 +11,9 @@ class SendUserEmailTest {
 		String prods[] = { "Monopoly", "Jenga" };
 
 		String mailOfUser = "katerina.dimatou@gmail.com";
-		String nameOfUser = "Katerina Dimatou";
 
 		SendUserEmail b = new SendUserEmail();
 
-		b.sendUserMail(nameOfUser, mailOfUser, mails, names, prods);
+		b.sendUserMail(mailOfUser, mails, names, prods);
 	}
 }

@@ -15,17 +15,17 @@ import javax.mail.internet.MimeMessage;
  * who needs to be informed about the offer made to the important clients in
  * order for them to keep track of the offers they make
  * 
- * SendUserEmail gets the name and the email account of the user and three string arrays, one of recipients' mails 
- * one of their names and one of the products the company has decided to offer. Then, it contacts the gmail server,
- * logs into the gmail account of the company and then prepares the
+ * SendUserEmail gets the name and the email account of the user and three
+ * string arrays, one of recipients' mails one of their names and one of the
+ * products the company has decided to offer. Then, it contacts the gmail
+ * server, logs into the gmail account of the company and then prepares the
  * corresponding message to the user containing the number of the gifts given
  * and more specifically a list for the rewarded clients and a list of the
  * products that were distributed
  * 
  * @author Katerina Dimatou
  * 
- * @param name   of the user of the program
- * @param email  account of the user of the program
+ * @param email account of the user of the program
  * @param array of recipients' mails
  * @param array of recipients' names
  * @param array of products that will be given out
@@ -36,7 +36,8 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class SendUserEmail {
-	public void sendUserMail(String nameOfUser, String emailOfUser, String[] recepients, String[] names, String[] productsToOffer) throws Exception {
+	public void sendUserMail(String emailOfUser, String[] recepients, String[] names, String[] productsToOffer)
+			throws Exception {
 
 		int numOfGifts = productsToOffer.length;
 
@@ -67,11 +68,11 @@ public class SendUserEmail {
 		// sending the email by calling the prepareMessage method in order to create the
 		// message
 
-		Message message = prepareMessage(session, myAccount, nameOfUser, emailOfUser, numOfGifts, peopleOfOffer,
+		Message message = prepareMessage(session, myAccount, emailOfUser, numOfGifts, peopleOfOffer,
 				productsOfOffer);
 		Transport.send(message);
 
-		System.out.println("Message sent succesfully");
+		JOptionPane.showMessageDialog(null, "Message sent succesfully");
 	}
 
 	/**
@@ -92,14 +93,14 @@ public class SendUserEmail {
 	 * @throws Exception
 	 * 
 	 */
-	private static Message prepareMessage(Session session, String myAccount, String nameOfUser, String emailOfUser,
-			int numOfGifts, String peopleOfOffer, String productsOfOffer) {
+	private static Message prepareMessage(Session session, String myAccount, String emailOfUser, int numOfGifts,
+			String peopleOfOffer, String productsOfOffer) {
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(myAccount));
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(emailOfUser));
 			message.setSubject("You have given out presents!");
-			message.setText("Dear" + " " + nameOfUser + "," + System.lineSeparator() + System.lineSeparator()
+			message.setText("Dear" + " User" + "," + System.lineSeparator() + System.lineSeparator()
 					+ "We are pleased to announce that "
 					+ "you have rewarded your most valuable clients for their loyalty with a present. More specifically you have "
 					+ " given out " + numOfGifts

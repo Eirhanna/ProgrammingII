@@ -15,6 +15,7 @@ import javax.mail.Message;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.InternetAddress;
+import javax.swing.JOptionPane;
 
 /**
  * SendEmail is responsible to send emails to the customer that are entitled to
@@ -39,7 +40,7 @@ public class SendEmail {
 
 	public void sendMail(String[] recepients, String[] names, String[] productsToOffer) throws Exception {
 
-		System.out.println("Ready to send email");
+		JOptionPane.showMessageDialog(null, "Ready to send email");
 		Properties properties = new Properties();
 
 		// Contacting the gmail server
@@ -69,7 +70,7 @@ public class SendEmail {
 			Transport.send(message);
 		}
 
-		System.out.println("Message sent succesfully");
+		JOptionPane.showMessageDialog(null, "Message sent succesfully");
 	}
 
 	/**
