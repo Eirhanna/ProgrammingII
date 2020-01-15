@@ -32,9 +32,9 @@ public class Gifts {
 	ArrayList<Product> productsPassedTheSellPeriod = objectOfProductsClass.createListofProductsPassedTheSellPeriod();
 	EmailThreads objectOfEmailThreadsClass = new EmailThreads(); // create an object of the class EmailThreads
 	static int sizeOfnewoffered = Customer.newoffered.size();
-	OptionMenu objectOfOptionmenu = new OptionMenu(); 
-	SendUserEmail objectOfSendUserEmailClass = new SendUserEmail(); // create an object of the class SendUserEmail
-	
+	static OptionMenu objectOfOptionmenu;
+	SendUserEmail objectOfSendUserEmailClass = new SendUserEmail();
+
 	/**
 	 * find how many products have surpassed their sell period and can be given as
 	 * presents to the customers.
@@ -80,7 +80,7 @@ public class Gifts {
 	 */
 	public int askNumberOfGifts() {
 		findNumberOfGifts(sizeOfnewoffered);
-		
+		objectOfSendUserEmailClass = new SendUserEmail();
 		JOptionPane.showMessageDialog(null,
 				"You can make up to " + (numberOfPossibleGifts) + " gifts to your most valuable customers.");
 		int numberOfGifts = Integer.parseInt(JOptionPane.showInputDialog("How many gifts do you wish to make?"));
@@ -137,9 +137,12 @@ public class Gifts {
 	 *              descending order
 	 */
 	public void findGiftsReceivers() throws Exception {
+
+		objectOfOptionmenu = new OptionMenu();
 		// checks if there are any products over the sell period to offer as gifts
 		sortMyListBasedOnThePrice(productsPassedTheSellPeriod);
 		sortMyListBasedOnTheTotalFees(Customer.newoffered);
+
 		if (productsPassedTheSellPeriod.size() != 0 && sizeOfnewoffered != 0) {
 			numberOfGifts = askNumberOfGifts();
 			if (numberOfGifts != 0) {
@@ -169,10 +172,6 @@ public class Gifts {
 				objectOfEmailThreadsClass.generateThreads(numberOfGifts, mailsOfCustomersForGifts,
 						namesOfCustomersForGifts, namesOfProductsAsGifts); // calls the method that sends the email to
 																			// the customers with the use of Threads
-				objectOfSendUserEmailClass.sendUserMail(objectOfOptionmenu.mail, mailsOfCustomersForGifts,
-						namesOfCustomersForGifts, namesOfProductsAsGifts); // calls the method responsible to send an
-																			// email to the person using the program to
-																			// help them keep track of the gifts send
 			}
 		} else {
 			JOptionPane.showMessageDialog(null,
@@ -241,10 +240,8 @@ public class Gifts {
 	public static void setNamesOfProductsAsGifts(String[] namesOfProductsAsGifts) {
 		Gifts.namesOfProductsAsGifts = namesOfProductsAsGifts;
 	}
-	
+
 	// Default constructor.
 	public Gifts() {
 
 	}
-}
-
