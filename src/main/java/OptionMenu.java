@@ -16,7 +16,7 @@ public class OptionMenu extends JFrame implements ActionListener {
 	private JMenuItem item3 = new JMenuItem("3.Add customer's purchase");
 	private JMenuItem item4 = new JMenuItem("4.Make an offer");
 	/** Represents the correct password of our user */
-	private static String password = "D";
+	private static String password = "Detgifthubteam";
 	/**
 	 * Represents the quantity of the product that the user will select when he
 	 * clicks in option 3
