@@ -10,13 +10,13 @@ This program has been created in order to maintain the most beneficial for the c
 
 ## Basic structure of the master github repository
 * src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src)
-  * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
-* JUnit tests()
+ * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
+  * java classes(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/java)
+ * JUnit tests()
 * images(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/image)
 * Resaurses
 * sql
 * csv file
-* java classes
 * README.md(https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/README.md)
 
 ## Tools you need in order to successfully run the application
