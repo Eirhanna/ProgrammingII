@@ -13,9 +13,9 @@ This program has been created in order to maintain the most beneficial for the c
 
 * src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src)
    * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
-  * java classes(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/java)
-  * Resaurses(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/resources)
-  * Manual(https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/src/main/DetGifthub%20User%20Manual.pdf)
+     * java classes(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/java)
+     * Resaurses(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/resources)
+     * Manual(https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/src/main/DetGifthub%20User%20Manual.pdf)
  * JUnit tests(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/tests)
 * README.md(https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/README.md)
 
