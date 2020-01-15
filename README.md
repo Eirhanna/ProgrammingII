@@ -13,7 +13,7 @@ This program has been created in order to maintain the most beneficial for the c
 * src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src)
  * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
   * java classes(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/java)
-  * Resaurses()
+  * Resaurses(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/resources)
    * sql()
    * csv file()
  * JUnit tests(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/tests)
