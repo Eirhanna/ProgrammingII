@@ -13,10 +13,10 @@ This program has been created in order to maintain the most beneficial for the c
 * src file(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src)
  * main(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main)
   * java classes(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/main/java)
- * JUnit tests()
-* Resaurses
-* sql
-* csv file
+  * Resaurses()
+   * sql()
+   * csv file()
+ * JUnit tests(https://github.com/EirhannaPapoutsi/ProgrammingII/tree/master/src/tests)
 * README.md(https://github.com/EirhannaPapoutsi/ProgrammingII/blob/master/README.md)
 
 ## Tools you need in order to successfully run the application
