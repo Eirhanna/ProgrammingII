@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
  * who needs to be informed about the offer made to the important clients in
  * order for them to keep track of the offers they make
  * 
- * SendUserEmail gets the name and the email account of the user and three
+ * SendUserEmail gets the email account of the user and three
  * string arrays, one of recipients' mails one of their names and one of the
  * products the company has decided to offer. Then, it contacts the gmail
  * server, logs into the gmail account of the company and then prepares the
